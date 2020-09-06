@@ -1,0 +1,21 @@
+html {
+  box-sizing: border-box;
+
+  font-family: $fontFamily;
+  font-size: $baseFontSize * 1px;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+body {
+  overflow: hidden;
+
+  padding: 0;
+  margin: 0;
+}
