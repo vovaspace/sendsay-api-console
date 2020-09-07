@@ -1,7 +1,7 @@
-// Px to Rem: rem(16) -> 1rem (if $baseFontSize: 16)
+// Px to Rem: rem(16) -> 1rem
 @function rem($size) {
   @if unitless($size) {
-    $remSize: $size / $baseFontSize;
+    $remSize: $size / 16;
     @return #{$remSize}rem;
   } @else {
     @error 'Size must be a unitless number.';
