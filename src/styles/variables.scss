@@ -1,6 +1,81 @@
-$baseFontSize: 16;
+/* -- Text -- */
 
+$baseFontSize: 16;
 
 $fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI",
              "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
              "Droid Sans", "Helvetica Neue", sans-serif;
+
+
+
+
+/* -- Grid -- */
+
+$outerSize: 15;
+
+
+
+
+/* -- Transitions -- */
+
+$transition-duration--fastest: 304ms;
+$transition-duration--fast: 656ms;
+$transition-duration--medium: 1008ms;
+$transition-duration--slow: 1360ms;
+$transition-duration--slowest: 1712ms;
+
+$transition-timingFunction--deceleration: cubic-bezier(0, 0, 0.2, 1);
+$transition-timingFunction--standard: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-timingFunction--acceleration: cubic-bezier(0.4, 0, 1, 1);
+$transition-timingFunction--sharp: cubic-bezier(0.4, 0, 0.6, 1);
+
+
+
+
+/* -- Base Colors -- */
+
+$color-light: #ffffff;
+$color-dark: #0d0d0d;
+
+$color-translucentLight--15: rgba(255, 255, 255, 0.15);
+
+$color-translucentDark--10: rgba(0, 0, 0, 0.1);
+$color-translucentDark--15: rgba(0, 0, 0, 0.15);
+$color-translucentDark--20: rgba(0, 0, 0, 0.2);
+$color-translucentDark--25: rgba(0, 0, 0, 0.25);
+$color-translucentDark--40: rgba(0, 0, 0, 0.4);
+
+$color-gray--50: #f6f6f6;
+$color-gray--60: #c4c4c4;
+$color-gray--70: #999999;
+
+$color-red--10: rgba(#cf2c00, 0.1);
+$color-red--30: rgba(#cf2c00, 0.5);
+$color-red--50: #cf2c00;
+
+$color-green--50: #30b800;
+
+$color-blue--10: rgba(#45a5ff, 0.5);
+$color-blue--30: #45a5ff;
+$color-blue--50: #0055fb;
+
+
+/* -- UI Colors -- */
+
+$color-background--dark: $color-gray--50;
+$color-background--light: $color-light;
+
+$color-border: $color-translucentDark--20;
+$color-border--dark: $color-translucentDark--40;
+
+$color-text: $color-dark;
+
+$color-button--main: $color-blue--50;
+$color-button--light: $color-blue--30;
+$color-button--text: $color-light;
+$color-button--outline: $color-blue--10;
+$color-button--disabled: $color-gray--60;
+
+$color-status--unknown: $color-gray--60;
+$color-status--success: $color-green--50;
+$color-status--error: $color-red--50;
