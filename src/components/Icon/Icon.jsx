@@ -37,9 +37,13 @@ export const IconPropTypes = {
   // Icon names from src/resources/icons
   icon: PropTypes.oneOf([
     'align-right',
-    'kebab-horizontal',
+    'cancel',
+    'kebab-vertical',
+    'loader',
     'logout',
     'maximize',
+    'meh',
+    'minimize',
   ]).isRequired,
 };
 
