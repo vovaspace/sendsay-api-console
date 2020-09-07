@@ -1,11 +1,8 @@
 import React from 'react';
 
-import { Icon } from '@/components/Icon';
+import { AppScreen } from '@/containers/AppScreen';
 
 
 export const App = () => (
-  <span>
-    Hello World
-    <Icon icon="align-right" />
-  </span>
+  <AppScreen />
 );

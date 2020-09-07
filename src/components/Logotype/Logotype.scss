@@ -1,0 +1,27 @@
+.Logotype {
+  display: flex;
+  align-items: center;
+
+
+  &-Image {
+    width: rem(115);
+    height: rem(30);
+    background-color: #c4c4c4;
+  }
+
+
+  &-Title {
+    margin-top: 0; // Reset H1 style
+    margin-bottom: 0; // Reset H1 style
+    margin-left: rem(20);
+
+    font-size: rem(20);
+    font-weight: 400;
+    line-height: rem(30);
+
+
+    &--hidden {
+      @include hide();
+    }
+  }
+}

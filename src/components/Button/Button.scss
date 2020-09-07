@@ -1,0 +1,36 @@
+.Button {
+  $mainBackground: linear-gradient(0deg, $color-button--main, $color-button--light);
+
+  min-width: rem(120);
+  height: rem(40);
+  padding-right: rem(10);
+  padding-left: rem(10);
+
+  cursor: pointer;
+
+  color: $color-button--text;
+  border: none; // Reset button style
+  border-radius: rem(5);
+  background: $mainBackground;
+
+  font-weight: 500;
+
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 rem(2) $color-button--outline;
+  }
+
+  &:hover {
+    background: linear-gradient(0deg, $color-translucentLight--15, $color-translucentLight--15), $mainBackground;
+  }
+
+  &:active {
+    background: linear-gradient(0deg, $color-translucentDark--15, $color-translucentDark--15), $mainBackground;
+  }
+
+  &:disabled {
+    cursor: default;
+    background: $color-button--disabled;
+  }
+}

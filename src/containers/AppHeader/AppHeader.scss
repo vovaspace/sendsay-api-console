@@ -1,0 +1,16 @@
+.AppHeader {
+  display: flex;
+
+
+  &-Item {
+
+    &:not(:last-child) {
+      margin-right: rem(30);
+    }
+
+
+    &--shiftedRight {
+      margin-left: auto;
+    }
+  }
+}
