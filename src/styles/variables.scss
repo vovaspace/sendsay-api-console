@@ -65,8 +65,11 @@ $color-background--light: $color-light;
 
 $color-border: $color-translucentDark--20;
 $color-border--dark: $color-translucentDark--40;
+$color-border--error: $color-red--50;
 
 $color-text: $color-dark;
+$color-text--gray: $color-gray--70;
+$color-text--error: $color-red--50;
 
 $color-button--main: $color-blue--50;
 $color-button--light: $color-blue--30;
@@ -83,3 +86,6 @@ $color-status--error: $color-red--50;
 /* Shadows */
 
 $shadow-outline--blue: 0 0 0 rem(2) $color-blue--10;
+$shadow-outline--dark: 0 0 0 rem(2) $color-translucentDark--20;
+
+$shadow-error: 0 0 rem(5) 0 $color-red--30;

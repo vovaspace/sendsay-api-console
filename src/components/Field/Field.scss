@@ -1,0 +1,38 @@
+.Field {
+  display: flex;
+  flex-direction: column;
+
+
+  &-Label {
+    display: flex;
+    align-items: flex-end;
+
+    width: 100%;
+    margin-bottom: rem(5);
+
+
+    &--shrinked {
+      margin-bottom: rem(3);
+
+      color: $color-text--gray;
+
+      font-size: rem(12);
+      line-height: rem(20);
+    }
+
+
+    &--error {
+      color: $color-text--error;
+    }
+  }
+
+
+  &-OptionalBadge {
+    margin-left: auto;
+
+    color: $color-text--gray;
+
+    font-size: rem(12);
+    line-height: rem(20);
+  }
+}

@@ -1,0 +1,39 @@
+.TextInput {
+  padding: rem(4) rem(9);
+
+  border-width: rem(1);
+  border-style: solid;
+  border-color: $color-border;
+  border-radius: rem(5);
+
+  font-size: rem(18);
+  line-height: rem(30);
+
+
+  &:hover {
+    border-color: $color-border--dark;
+  }
+
+
+  &:focus {
+    border-color: $color-border--dark;
+    outline: none;
+    box-shadow: $shadow-outline--dark;
+  }
+
+
+  &--area {
+    padding: rem(9);
+
+    resize: none;
+
+    font-size: rem(14);
+    line-height: rem(18);
+  }
+
+
+  &--error {
+    border-color: $color-border--error;
+    box-shadow: $shadow-error;
+  }
+}
