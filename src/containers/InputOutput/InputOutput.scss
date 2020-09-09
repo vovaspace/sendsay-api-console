@@ -1,0 +1,35 @@
+.InputOutput {
+  display: flex;
+  padding: rem(10) rem($outerSize) rem(15);
+
+
+  &-Field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: rem(180);
+    height: 100%;
+
+
+    &--type {
+
+      &_input {
+        order: 1;
+      }
+
+      &_output {
+        order: 3;
+      }
+    }
+  }
+
+
+  &-Input {
+    flex-grow: 1;
+  }
+
+
+  &-DragLever {
+    order: 2;
+    flex: 0 0 rem(10);
+  }
+}
