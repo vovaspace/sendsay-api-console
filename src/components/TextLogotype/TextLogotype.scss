@@ -1,0 +1,13 @@
+.TextLogotype {
+  margin-top: 0; // Reset H1 style
+  margin-bottom: 0; // Reset H1 style
+
+  font-size: rem(24);
+  font-weight: 400; // Reset H1 style
+  line-height: rem(30);
+
+
+  &--shrinked {
+    font-size: rem(20);
+  }
+}

@@ -7,6 +7,7 @@ import { makeCn } from '@/utils';
 import { AppBar } from '@/components/AppBar';
 import { IconButton } from '@/components/IconButton';
 import { Logotype } from '@/components/Logotype';
+import { TextLogotype } from '@/components/TextLogotype';
 import { UserChip } from '@/components/UserChip';
 
 import './AppHeader.scss';
@@ -27,8 +28,15 @@ export const AppHeader = (props) => {
       tag="header"
       type="top"
     >
-      <Logotype className={cn('Item')} />
-      <UserChip className={cn('Item', { shiftedRight: true })} login="some@email.com" sublogin="sublogin" />
+      <Logotype className={cn('Item', { logotype: true })} />
+      <TextLogotype className={cn('Item')} shrinked />
+
+      <UserChip
+        className={cn('Item', { shiftedRight: true })}
+        login="some@email.com"
+        sublogin="sublogin"
+      />
+
       <IconButton
         className={cn('Item')}
         icon="logout"

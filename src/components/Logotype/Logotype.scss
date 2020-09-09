@@ -1,13 +1,7 @@
 .Logotype {
-  display: flex;
-  align-items: center;
-
-
-  &-Image {
-    width: rem(115);
-    height: rem(30);
-    background-color: #c4c4c4;
-  }
+  width: rem(115);
+  height: rem(30);
+  background-color: #c4c4c4;
 
 
   &-Title {

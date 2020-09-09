@@ -3,11 +3,15 @@
 
 
   &-Item {
+    margin-right: rem(30);
 
-    &:not(:last-child) {
-      margin-right: rem(30);
+    &:last-child {
+      margin-right: 0;
     }
 
+    &--logotype {
+      margin-right: rem(20);
+    }
 
     &--shiftedRight {
       margin-left: auto;
