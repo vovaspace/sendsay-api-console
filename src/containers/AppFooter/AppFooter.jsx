@@ -6,6 +6,7 @@ import { makeCn } from '@/utils';
 
 import { AppBar } from '@/components/AppBar';
 import { Button } from '@/components/Button';
+import { Copyright } from '@/components/Copyright';
 import { IconButton } from '@/components/IconButton';
 
 import './AppFooter.scss';
@@ -29,6 +30,8 @@ export const AppFooter = (props) => {
       <Button>
         Отправить
       </Button>
+
+      <Copyright />
 
       <IconButton
         icon="align-right"
