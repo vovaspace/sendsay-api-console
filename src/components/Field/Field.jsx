@@ -13,8 +13,8 @@ const cn = makeCn('Field');
 export const Field = (props) => {
   const {
     children,
-    className,
     style,
+    className,
     label,
     required,
     error,
@@ -24,7 +24,7 @@ export const Field = (props) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label className={classnames(cn(), className)} style={style}>
+    <label style={style} className={classnames(cn(), className)}>
       <span className={cn('Label', { error, shrinked: shrinkedLabel })}>
         {label}
         {!required && <span className={cn('OptionalBadge')}>Опционально</span>}
@@ -38,8 +38,8 @@ export const Field = (props) => {
 
 export const FieldPropTypes = {
   children: ChildrenPropType.isRequired,
-  className: PropTypes.string,
   style: StylePropType,
+  className: PropTypes.string,
   label: PropTypes.string.isRequired,
   required: PropTypes.bool,
   error: PropTypes.bool,

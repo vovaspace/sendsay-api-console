@@ -7,22 +7,23 @@ import { TextInput, TextInputPropTypes } from '@/components/TextInput';
 
 export const TextField = (props) => {
   const {
-    className,
     style,
+    className,
     inputClassName,
     error,
+
     label,
     required,
     shrinkedLabel,
-    area,
+
     ...rest
   } = props;
 
 
   return (
     <Field
-      className={className}
       style={style}
+      className={className}
       label={label}
       required={required}
       shrinkedLabel={shrinkedLabel}
@@ -30,7 +31,6 @@ export const TextField = (props) => {
     >
       <TextInput
         className={inputClassName}
-        area={area}
         error={error}
         {...rest}
       />
@@ -43,14 +43,13 @@ export const TextFieldPropTypes = {
   error: PropTypes.bool,
 
   /* eslint-disable react/require-default-props */
-  className: FieldPropTypes.className,
   style: FieldPropTypes.style,
+  className: FieldPropTypes.className,
   label: FieldPropTypes.label,
   required: FieldPropTypes.required,
   shrinkedLabel: FieldPropTypes.shrinkedLabel,
 
   inputClassName: TextInputPropTypes.className,
-  area: TextInputPropTypes.area,
   /* eslint-enable react/require-default-props */
 };
 

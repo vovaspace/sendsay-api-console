@@ -19,6 +19,7 @@ export const InputOutput = (props) => {
   } = props;
 
   const [fieldsSize, setFieldsSize] = useState({ inputWidth: 50, outputWidth: 50 });
+  const [value, setValue] = useState({ input: '', output: '' });
 
   const rootRef = useRef(null);
 
@@ -37,27 +38,40 @@ export const InputOutput = (props) => {
   }, []);
 
 
+  const handleChange = useCallback((nextValue, name) => {
+    setValue((currentValue) => ({ ...currentValue, [name]: nextValue }));
+  }, []);
+
+
   return (
     <div
       ref={rootRef}
       className={classnames(cn(), className)}
     >
       <TextField
-        className={cn('Field', { type: 'input' })}
         style={{ flexBasis: `${fieldsSize.inputWidth}%` }}
+        className={cn('Field', { type: 'input' })}
         inputClassName={cn('Input')}
+        value={value.input}
+        name="input"
         label="Запрос:"
         area
         shrinkedLabel
+
+        onChange={handleChange}
       />
 
       <TextField
-        className={cn('Field', { type: 'output' })}
         style={{ flexBasis: `${fieldsSize.outputWidth}%` }}
+        className={cn('Field', { type: 'output' })}
         inputClassName={cn('Input')}
+        value={value.output}
+        name="output"
         label="Ответ:"
         area
         shrinkedLabel
+
+        onChange={handleChange}
       />
 
       <DragLever
