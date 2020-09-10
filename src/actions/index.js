@@ -1,6 +1,8 @@
-import * as InitializationActions from './initialization.actions';
+import * as AuthActions from './auth.actions';
+import * as InitActions from './init.actions';
 
 
 export {
-  InitializationActions,
+  AuthActions,
+  InitActions,
 };

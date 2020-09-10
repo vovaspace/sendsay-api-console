@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createElement, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -16,8 +16,23 @@ export const ErrorCard = (props) => {
   const {
     className,
     message,
-    description,
+    messageTag,
+    error,
   } = props;
+
+
+  const description = useMemo(() => {
+    if (!error) {
+      return null;
+    }
+
+    // Error without request
+    const { request, ...rest } = error;
+
+    return (
+      <p className={cn('Description')}>{JSON.stringify(rest)}</p>
+    );
+  }, [error]);
 
 
   return (
@@ -28,8 +43,13 @@ export const ErrorCard = (props) => {
       <Icon className={cn('Icon')} icon="meh" />
 
       <div className={cn('TextContainer')}>
-        <h2 className={cn('Message')}>{message}</h2>
-        {description && <p className={cn('Description')}>{description}</p>}
+        {createElement(
+          messageTag,
+          { className: cn('Message') },
+          message,
+        )}
+
+        {description}
       </div>
     </section>
   );
@@ -39,13 +59,20 @@ export const ErrorCard = (props) => {
 export const ErrorCardPropTypes = {
   className: PropTypes.string,
   message: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  messageTag: PropTypes.string,
+  error: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    explain: PropTypes.string,
+    // eslint-disable-next-line react/forbid-prop-types
+    request: PropTypes.object,
+  }),
 };
 
 
 export const ErrorCardDefaultProps = {
   className: null,
-  description: null,
+  messageTag: 'h2',
+  error: null,
 };
 
 

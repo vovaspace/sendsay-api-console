@@ -1,10 +1,10 @@
-import { all, fork } from 'redux-saga/effects';
+import { spawn } from 'redux-saga/effects';
 
-import { initWatch } from './init.saga';
+import { authFlow } from './authFlow.saga';
+import { initFlow } from './initFlow.saga';
 
 
 export function* rootSaga() {
-  yield all([
-    fork(initWatch),
-  ]);
+  yield spawn(authFlow);
+  yield spawn(initFlow);
 }

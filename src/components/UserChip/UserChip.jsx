@@ -13,14 +13,14 @@ const cn = makeCn('UserChip');
 export const UserChip = (props) => {
   const {
     className,
-    login,
+    account,
     sublogin,
   } = props;
 
 
   return (
     <span className={classnames(cn(), className)}>
-      <span className={cn('Item')}>{login}</span>
+      <span className={cn('Item')}>{account}</span>
       {sublogin && <span className={cn('Item')}>{sublogin}</span>}
     </span>
   );
@@ -29,7 +29,7 @@ export const UserChip = (props) => {
 
 export const UserChipPropTypes = {
   className: PropTypes.string,
-  login: PropTypes.string.isRequired,
+  account: PropTypes.string.isRequired,
   sublogin: PropTypes.string,
 };
 

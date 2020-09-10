@@ -26,6 +26,7 @@ $transition-timingFunction--deceleration: cubic-bezier(0, 0, 0.2, 1);
 $transition-timingFunction--standard: cubic-bezier(0.4, 0, 0.2, 1);
 $transition-timingFunction--acceleration: cubic-bezier(0.4, 0, 1, 1);
 $transition-timingFunction--sharp: cubic-bezier(0.4, 0, 0.6, 1);
+$transition-timingFunction--linear: linear;
 
 
 
@@ -61,7 +62,7 @@ $color-blue--50: #0055fb;
 
 /* -- UI Colors -- */
 
-$color-background--darkish: $color-gray--40;
+$color-background--root: $color-gray--40;
 $color-background--dark: $color-gray--50;
 $color-background--light: $color-light;
 $color-background--error: $color-red--10;
@@ -82,6 +83,9 @@ $color-button--disabled: $color-gray--60;
 $color-status--unknown: $color-gray--60;
 $color-status--success: $color-green--50;
 $color-status--error: $color-red--50;
+
+$color-loader--blue: $color-blue--50;
+$color-loader--light: $color-light;
 
 
 

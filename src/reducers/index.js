@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { initialization } from './initialization.reducer';
+import { auth } from './auth.reducer';
+import { init } from './init.reducer';
 
 
 export const rootReducer = combineReducers({
-  initialization,
+  auth,
+  init,
 });

@@ -1,8 +1,11 @@
 import React, { useState, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
+import { AuthActions } from '@/actions';
+import { AuthSelectors } from '@/selectors';
 
 import { TextLogotype } from '@/components/TextLogotype';
 import { TextField } from '@/components/TextField';
@@ -20,6 +23,10 @@ export const AuthForm = (props) => {
     className,
   } = props;
 
+  const dispatch = useDispatch();
+
+  const error = useSelector(AuthSelectors.selectError);
+
 
   const [formValue, setFormValue] = useState({
     login: '',
@@ -35,7 +42,8 @@ export const AuthForm = (props) => {
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
-  }, []);
+    dispatch(AuthActions.loginRequest(formValue));
+  }, [formValue, dispatch]);
 
 
   return (
@@ -45,11 +53,13 @@ export const AuthForm = (props) => {
     >
       <TextLogotype className={cn('Item')} />
 
-      <ErrorCard
-        className={cn('Item')}
-        message="Вход не вышел"
-        description={'{id: "error/auth/failed", explain: "wrong_credentials"}'}
-      />
+      {error && (
+        <ErrorCard
+          className={cn('Item')}
+          message="Вход не вышел"
+          error={error}
+        />
+      )}
 
       <TextField
         className={cn('Item')}
