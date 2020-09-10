@@ -43,6 +43,7 @@ $color-translucentDark--20: rgba(0, 0, 0, 0.2);
 $color-translucentDark--25: rgba(0, 0, 0, 0.25);
 $color-translucentDark--40: rgba(0, 0, 0, 0.4);
 
+$color-gray--40: #f7f7f7;
 $color-gray--50: #f6f6f6;
 $color-gray--60: #c4c4c4;
 $color-gray--70: #999999;
@@ -60,8 +61,10 @@ $color-blue--50: #0055fb;
 
 /* -- UI Colors -- */
 
+$color-background--darkish: $color-gray--40;
 $color-background--dark: $color-gray--50;
 $color-background--light: $color-light;
+$color-background--error: $color-red--10;
 
 $color-border: $color-translucentDark--20;
 $color-border--dark: $color-translucentDark--40;
@@ -89,3 +92,5 @@ $shadow-outline--blue: 0 0 0 rem(2) $color-blue--10;
 $shadow-outline--dark: 0 0 0 rem(2) $color-translucentDark--20;
 
 $shadow-error: 0 0 rem(5) 0 $color-red--30;
+
+$shadow-elevation: 0 rem(4) rem(10) 0 $color-translucentDark--10;
