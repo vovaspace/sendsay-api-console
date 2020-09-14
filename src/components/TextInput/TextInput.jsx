@@ -14,6 +14,7 @@ export const TextInput = (props) => {
   const {
     className,
     value,
+    type,
     name,
     area,
     error,
@@ -39,7 +40,7 @@ export const TextInput = (props) => {
       ...rest,
 
       className: classnames(cn({ area, error }), className),
-      type: area ? null : 'text',
+      type: area ? null : type,
       value,
       name,
 
@@ -53,6 +54,7 @@ export const TextInput = (props) => {
 export const TextInputPropTypes = {
   className: PropTypes.string,
   value: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['text', 'password', 'email', 'search', 'tel', 'url']),
   name: PropTypes.string,
   area: PropTypes.bool,
   error: PropTypes.bool,
@@ -63,6 +65,7 @@ export const TextInputPropTypes = {
 
 export const TextInputDefaultProps = {
   className: null,
+  type: 'text',
   name: null,
   area: false,
   error: false,

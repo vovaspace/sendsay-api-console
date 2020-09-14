@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -11,6 +11,8 @@ import { TextLogotype } from '@/components/TextLogotype';
 import { TextField } from '@/components/TextField';
 import { Button } from '@/components/Button';
 import { ErrorCard } from '@/components/ErrorCard';
+
+import { validate } from './validate';
 
 import './AuthForm.scss';
 
@@ -25,7 +27,7 @@ export const AuthForm = (props) => {
 
   const dispatch = useDispatch();
 
-  const error = useSelector(AuthSelectors.selectError);
+  const loginError = useSelector(AuthSelectors.selectError);
   const isLoading = useSelector(AuthSelectors.selectIsLoading);
 
 
@@ -35,16 +37,25 @@ export const AuthForm = (props) => {
     password: '',
   });
 
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
 
   const handleChange = useCallback((value, name) => {
     setFormValue((currentValue) => ({ ...currentValue, [name]: value }));
   }, []);
 
 
+  const formErrors = useMemo(() => validate(formValue), [formValue]);
+
+
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
-    dispatch(AuthActions.loginRequest(formValue));
-  }, [formValue, dispatch]);
+    setHasSubmitted(true);
+
+    if (!formErrors) {
+      dispatch(AuthActions.loginRequest(formValue));
+    }
+  }, [formValue, formErrors, dispatch]);
 
 
   return (
@@ -54,11 +65,11 @@ export const AuthForm = (props) => {
     >
       <TextLogotype className={cn('Item')} />
 
-      {error && (
+      {loginError && (
         <ErrorCard
           className={cn('Item')}
           message="Вход не вышел"
-          error={error}
+          error={loginError}
         />
       )}
 
@@ -67,6 +78,7 @@ export const AuthForm = (props) => {
         value={formValue.login}
         name="login"
         label="Логин"
+        error={hasSubmitted && formErrors?.login}
 
         onChange={handleChange}
       />
@@ -74,6 +86,7 @@ export const AuthForm = (props) => {
       <TextField
         className={cn('Item')}
         value={formValue.sublogin}
+        type="email"
         name="sublogin"
         label="Сублогин"
         required={false}
@@ -84,8 +97,10 @@ export const AuthForm = (props) => {
       <TextField
         className={cn('Item')}
         value={formValue.password}
+        type="password"
         name="password"
         label="Пароль"
+        error={hasSubmitted && formErrors?.password}
 
         onChange={handleChange}
       />
@@ -93,6 +108,7 @@ export const AuthForm = (props) => {
       <Button
         className={cn('Item', { alignedLeft: true })}
         type="submit"
+        disabled={Boolean(hasSubmitted && formErrors)}
         loading={isLoading}
       >
         Войти
