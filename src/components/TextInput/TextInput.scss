@@ -10,6 +10,14 @@
   line-height: rem(30);
 
 
+  // Chrome autofill bug-fix
+  &:-webkit-autofill::first-line {
+    font-family: $fontFamily;
+    font-size: rem(18);
+    line-height: rem(30);
+  }
+
+
   &:hover {
     border-color: $color-border--dark;
   }
