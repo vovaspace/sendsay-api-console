@@ -12,8 +12,6 @@
   height: unset;
   padding: 0; // Reset button style
 
-  cursor: pointer;
-
   border: none; // Reset button style
   background: none; // Reset button style
 
@@ -45,17 +43,17 @@
     }
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     @include makeColor($color-button--main);
   }
 
-  &:active {
+  &:active:not(:disabled) {
     @include makeColor($color-button--light);
   }
 
-  &:disabled {
+
+  &--disabled {
     @include makeColor($color-button--disabled);
-    cursor: default;
   }
 
 
@@ -70,15 +68,21 @@
 
 
   &-Label {
-    margin-left: rem(8);
 
     &--hidden {
       @include hide();
     }
 
-    &--withRightMargin {
-      margin-right: rem(8);
-      margin-left: 0;
+
+    &--margin {
+
+      &_left {
+        margin-left: rem(8);
+      }
+
+      &_right {
+        margin-right: rem(8);
+      }
     }
   }
 }

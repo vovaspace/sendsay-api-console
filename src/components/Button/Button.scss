@@ -6,8 +6,6 @@
   padding-right: rem(10);
   padding-left: rem(10);
 
-  cursor: pointer;
-
   color: $color-button--text;
   border: none; // Reset button style
   border-radius: rem(5);
@@ -21,16 +19,23 @@
     box-shadow: $shadow-outline--blue;
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: linear-gradient(0deg, $color-translucentLight--15, $color-translucentLight--15), $mainBackground;
   }
 
-  &:active {
+  &:active:not(:disabled) {
     background: linear-gradient(0deg, $color-translucentDark--15, $color-translucentDark--15), $mainBackground;
   }
 
-  &:disabled {
-    cursor: default;
+
+  &--disabled {
     background: $color-button--disabled;
+  }
+
+
+  &-Inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

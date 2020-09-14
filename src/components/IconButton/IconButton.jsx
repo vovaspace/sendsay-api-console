@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { makeCn } from '@/utils';
 
 import { Icon, IconPropTypes } from '@/components/Icon';
+import { Loader } from '@/components/Loader';
 
 import './IconButton.scss';
 
@@ -23,27 +24,38 @@ export const IconButton = (props) => {
     children,
     className,
     type,
+    disabled,
+    loading,
+    disableOnLoading,
     hiddenLabel,
     iconPosition,
     icon,
     ...rest
   } = props;
 
-  const isRightIconPosition = iconPosition === ICON_POSITION.right;
 
   return (
     <button
-      className={classnames(cn(), className)}
+      className={classnames(cn({ disabled }), className)}
       // eslint-disable-next-line react/button-has-type
       type={type}
       title={hiddenLabel ? children : null}
+      disabled={disabled || (loading && disableOnLoading)}
       {...rest}
     >
-      <span className={cn('Inner', { invertedDirection: isRightIconPosition })}>
-        <Icon className={cn('Icon')} icon={icon} />
+      <span
+        className={cn('Inner', {
+          invertedDirection: iconPosition === ICON_POSITION.right,
+        })}
+      >
+        {(loading
+          ? <Loader />
+          : <Icon icon={icon} />
+        )}
+
         <span
           className={cn('Label', {
-            withRightMargin: isRightIconPosition,
+            margin: iconPosition,
             hidden: hiddenLabel,
           })}
         >
@@ -59,6 +71,9 @@ export const IconButtonPropTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string,
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
+  disableOnLoading: PropTypes.bool,
   hiddenLabel: PropTypes.bool,
   iconPosition: PropTypes.oneOf(Object.values(ICON_POSITION)),
 
@@ -70,6 +85,9 @@ export const IconButtonPropTypes = {
 export const IconButtonDefaultProps = {
   className: null,
   type: 'button',
+  disabled: false,
+  loading: false,
+  disableOnLoading: true,
   hiddenLabel: false,
   iconPosition: ICON_POSITION.left,
 };

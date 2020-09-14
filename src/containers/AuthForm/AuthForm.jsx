@@ -26,6 +26,7 @@ export const AuthForm = (props) => {
   const dispatch = useDispatch();
 
   const error = useSelector(AuthSelectors.selectError);
+  const isLoading = useSelector(AuthSelectors.selectIsLoading);
 
 
   const [formValue, setFormValue] = useState({
@@ -92,6 +93,7 @@ export const AuthForm = (props) => {
       <Button
         className={cn('Item', { alignedLeft: true })}
         type="submit"
+        loading={isLoading}
       >
         Войти
       </Button>

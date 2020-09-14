@@ -27,6 +27,7 @@ export const AppHeader = (props) => {
   const dispatch = useDispatch();
 
   const user = useSelector(AuthSelectors.selectUser);
+  const isLogoutLoading = useSelector(AuthSelectors.selectIsLoading);
 
 
   const handleLogout = useCallback(() => {
@@ -53,6 +54,7 @@ export const AppHeader = (props) => {
         className={cn('Item')}
         icon="logout"
         iconPosition="right"
+        loading={isLogoutLoading}
 
         onClick={handleLogout}
       >
