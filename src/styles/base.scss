@@ -28,8 +28,12 @@ body {
 }
 
 
-button:not(:disabled) {
+button {
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }
 
 
