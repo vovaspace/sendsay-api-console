@@ -1,6 +1,5 @@
 import { createElement, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -39,7 +38,7 @@ export const TextInput = (props) => {
     {
       ...rest,
 
-      className: classnames(cn({ area, error }), className),
+      className: cn({ area, error }, [className]),
       type: area ? null : type,
       value,
       name,

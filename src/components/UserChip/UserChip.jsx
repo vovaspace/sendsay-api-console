@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -19,7 +18,7 @@ export const UserChip = (props) => {
 
 
   return (
-    <span className={classnames(cn(), className)}>
+    <span className={cn(null, [className])}>
       <span className={cn('Item')}>{account}</span>
       {sublogin && <span className={cn('Item')}>{sublogin}</span>}
     </span>

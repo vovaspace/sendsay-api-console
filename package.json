@@ -21,7 +21,6 @@
     "@babel/runtime": "^7.11.2",
     "@bem-react/classname": "^1.5.8",
     "@reduxjs/toolkit": "^1.4.0",
-    "classnames": "^2.2.6",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

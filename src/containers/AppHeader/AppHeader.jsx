@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 import { AuthActions } from '@/actions';
@@ -37,7 +36,7 @@ export const AppHeader = (props) => {
 
   return (
     <AppBar
-      className={classnames(cn(), className)}
+      className={cn(null, [className])}
       tag="header"
       type="top"
     >

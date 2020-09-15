@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -24,7 +23,7 @@ export const Icon = (props) => {
   } = props;
 
   return (
-    <svg className={classnames(cn(), className)}>
+    <svg className={cn(null, [className])}>
       <use xlinkHref={`#icon-${icon}`} />
     </svg>
   );

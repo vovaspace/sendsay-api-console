@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -23,7 +22,7 @@ export const RequestsHistoryList = (props) => {
 
   return (
     <AppBar
-      className={classnames(cn(), className)}
+      className={cn(null, [className])}
       tag="aside"
       type="top"
       noPadding

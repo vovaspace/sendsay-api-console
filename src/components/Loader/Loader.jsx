@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -20,7 +19,7 @@ export const Loader = (props) => {
 
   return (
     <Icon
-      className={classnames(cn({ color }), className)}
+      className={cn({ color }, [className])}
       icon="loader"
     />
   );

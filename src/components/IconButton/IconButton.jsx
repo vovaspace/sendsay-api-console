@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -36,7 +35,7 @@ export const IconButton = (props) => {
 
   return (
     <button
-      className={classnames(cn({ disabled }), className)}
+      className={cn({ disabled }, [className])}
       // eslint-disable-next-line react/button-has-type
       type={type}
       title={hiddenLabel ? children : null}

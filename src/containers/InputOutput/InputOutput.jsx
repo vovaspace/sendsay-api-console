@@ -1,6 +1,5 @@
 import React, { useCallback, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn, getElementInnerWidth } from '@/utils';
 
@@ -46,7 +45,7 @@ export const InputOutput = (props) => {
   return (
     <div
       ref={rootRef}
-      className={classnames(cn(), className)}
+      className={cn(null, [className])}
     >
       <TextField
         style={{ flexBasis: `${fieldsSize.inputWidth}%` }}

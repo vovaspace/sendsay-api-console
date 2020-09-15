@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { KEYBOARD_KEY } from '@/constants';
 import { makeCn } from '@/utils';
@@ -66,7 +65,7 @@ export const DragLever = (props) => {
 
   return (
     <button
-      className={classnames(cn(), className)}
+      className={cn(null, [className])}
       type="button"
 
       onMouseDown={handleMouseDown}

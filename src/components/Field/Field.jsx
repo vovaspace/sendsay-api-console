@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn, ChildrenPropType, StylePropType } from '@/utils';
 
@@ -24,7 +23,7 @@ export const Field = (props) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label style={style} className={classnames(cn(), className)}>
+    <label style={style} className={cn(null, [className])}>
       <span className={cn('Label', { error, shrinked: shrinkedLabel })}>
         {label}
         {!required && <span className={cn('OptionalBadge')}>Опционально</span>}

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -16,7 +15,7 @@ export const Logotype = (props) => {
   } = props;
 
   return (
-    <div className={classnames(cn(), className)} />
+    <div className={cn(null, [className])} />
   );
 };
 

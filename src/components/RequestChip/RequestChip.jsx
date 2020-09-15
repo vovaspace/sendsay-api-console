@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { REQUEST_STATUS } from '@/constants';
 import { makeCn } from '@/utils';
@@ -20,7 +19,7 @@ export const RequestChip = (props) => {
 
 
   return (
-    <div className={classnames(cn(), className)}>
+    <div className={cn(null, [className])}>
       <button className={cn('Button')} type="button">
         <span className={cn('ButtonInner')}>
           <span className={cn('StatusIndicator', { type: status })} />

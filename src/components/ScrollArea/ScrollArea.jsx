@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn, ChildrenPropType } from '@/utils';
 
@@ -17,7 +16,7 @@ export const ScrollArea = (props) => {
   } = props;
 
   return (
-    <div className={classnames(cn(), className)}>
+    <div className={cn(null, [className])}>
       <div className={cn('ScrollContainer')}>
         <div className={cn('Inner')}>
           {children}

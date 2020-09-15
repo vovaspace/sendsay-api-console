@@ -1,6 +1,5 @@
 import { createElement } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn, ChildrenPropType } from '@/utils';
 
@@ -22,7 +21,7 @@ export const AppBar = (props) => {
   return createElement(
     tag,
     {
-      className: classnames(cn({ type, noPadding }), className),
+      className: cn({ type, noPadding }, [className]),
     },
     children,
   );

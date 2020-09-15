@@ -1,6 +1,5 @@
 import React, { createElement, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -37,7 +36,7 @@ export const ErrorCard = (props) => {
 
   return (
     <section
-      className={classnames(cn(), className)}
+      className={cn(null, [className])}
       role="alert"
     >
       <Icon className={cn('Icon')} icon="meh" />

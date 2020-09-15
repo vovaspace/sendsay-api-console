@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 
@@ -17,7 +16,7 @@ export const Copyright = (props) => {
 
   return (
     <a
-      className={classnames(cn(), className)}
+      className={cn(null, [className])}
       href="https://github.com/vovaspace"
       target="_blank"
       rel="noreferrer"

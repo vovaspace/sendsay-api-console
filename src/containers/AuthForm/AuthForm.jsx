@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { makeCn } from '@/utils';
 import { AuthActions } from '@/actions';
@@ -60,7 +59,7 @@ export const AuthForm = (props) => {
 
   return (
     <form
-      className={classnames(cn(), className)}
+      className={cn(null, [className])}
       onSubmit={handleSubmit}
     >
       <TextLogotype className={cn('Item')} />
