@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { REQUEST_STATUS } from '@/constants';
+import { CALL_STATUS } from '@/constants';
 import { makeCn } from '@/utils';
 
 import './RequestChip.scss';
@@ -34,7 +34,7 @@ export const RequestChip = (props) => {
 export const RequestChipPropTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string,
-  status: PropTypes.oneOf(Object.values(REQUEST_STATUS)).isRequired,
+  status: PropTypes.oneOf([CALL_STATUS.error, CALL_STATUS.success]).isRequired,
 };
 
 

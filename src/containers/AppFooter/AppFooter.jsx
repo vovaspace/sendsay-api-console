@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
+import { ApiCallerActions } from '@/actions';
+import { ApiCallerSelectors } from '@/selectors';
 
 import { AppBar } from '@/components/AppBar';
 import { Button } from '@/components/Button';
@@ -19,6 +22,19 @@ export const AppFooter = (props) => {
     className,
   } = props;
 
+  const dispatch = useDispatch();
+
+  const isCallLoading = useSelector(ApiCallerSelectors.selectIsLoading);
+
+
+  const handleSend = useCallback(() => {
+    dispatch(ApiCallerActions.makeCallRequest());
+  }, [dispatch]);
+
+  const handleFormat = useCallback(() => {
+    dispatch(ApiCallerActions.formatRequest());
+  }, [dispatch]);
+
 
   return (
     <AppBar
@@ -26,7 +42,11 @@ export const AppFooter = (props) => {
       tag="footer"
       type="bottom"
     >
-      <Button>
+      <Button
+        loading={isCallLoading}
+        disableOnLoading={false}
+        onClick={handleSend}
+      >
         Отправить
       </Button>
 
@@ -34,6 +54,7 @@ export const AppFooter = (props) => {
 
       <IconButton
         icon="align-right"
+        onClick={handleFormat}
       >
         Форматировать
       </IconButton>

@@ -44,4 +44,9 @@
     border-color: $color-border--error;
     box-shadow: $shadow-error;
   }
+
+
+  &--monospace {
+    font-family: monospace;
+  }
 }

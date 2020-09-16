@@ -1,7 +1,10 @@
 import React, { useCallback, useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { makeCn, getElementInnerWidth } from '@/utils';
+import { ApiCallerActions } from '@/actions';
+import { ApiCallerSelectors } from '@/selectors';
 
 import { TextField } from '@/components/TextField';
 import { DragLever } from '@/components/DragLever';
@@ -17,10 +20,17 @@ export const InputOutput = (props) => {
     className,
   } = props;
 
+  const dispatch = useDispatch();
+
+  const requestValue = useSelector(ApiCallerSelectors.selectRequestValue);
+  const responseValue = useSelector(ApiCallerSelectors.selectResponseValue);
+  const isCallInvalid = useSelector(ApiCallerSelectors.selectIsCallInvalid);
+  const isCallError = useSelector(ApiCallerSelectors.selectIsCallError);
+
   const [fieldsSize, setFieldsSize] = useState({ inputWidth: 50, outputWidth: 50 });
-  const [value, setValue] = useState({ input: '', output: '' });
 
   const rootRef = useRef(null);
+
 
   const handleDrag = useCallback((x) => {
     const rootWidth = getElementInnerWidth(rootRef.current);
@@ -37,9 +47,9 @@ export const InputOutput = (props) => {
   }, []);
 
 
-  const handleChange = useCallback((nextValue, name) => {
-    setValue((currentValue) => ({ ...currentValue, [name]: nextValue }));
-  }, []);
+  const handleInputChange = useCallback((value) => {
+    dispatch(ApiCallerActions.setRequestValue({ value }));
+  }, [dispatch]);
 
 
   return (
@@ -51,26 +61,29 @@ export const InputOutput = (props) => {
         style={{ flexBasis: `${fieldsSize.inputWidth}%` }}
         className={cn('Field', { type: 'input' })}
         inputClassName={cn('Input')}
-        value={value.input}
-        name="input"
+        value={requestValue}
+        name="request"
         label="Запрос:"
+        monospace
+        error={isCallInvalid}
         area
         shrinkedLabel
 
-        onChange={handleChange}
+        onChange={handleInputChange}
       />
 
       <TextField
         style={{ flexBasis: `${fieldsSize.outputWidth}%` }}
         className={cn('Field', { type: 'output' })}
         inputClassName={cn('Input')}
-        value={value.output}
-        name="output"
+        value={responseValue}
+        readOnly
+        name="response"
         label="Ответ:"
+        monospace
+        error={isCallError}
         area
         shrinkedLabel
-
-        onChange={handleChange}
       />
 
       <DragLever

@@ -1,4 +1,4 @@
-import { createElement, useCallback } from 'react';
+import { createElement, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
@@ -17,6 +17,7 @@ export const TextInput = (props) => {
     name,
     area,
     error,
+    monospace,
 
     onChange,
 
@@ -27,10 +28,14 @@ export const TextInput = (props) => {
   const tag = area ? 'textarea' : 'input';
 
 
-  const handleChange = useCallback((event) => {
-    const { target: { value: nextValue } } = event;
-    onChange(nextValue, name);
-  }, [name, onChange]);
+  const handleChange = useMemo(() => (
+    onChange
+      ? (event) => {
+        const { target: { value: nextValue } } = event;
+        onChange(nextValue, name);
+      }
+      : null),
+  [name, onChange]);
 
 
   return createElement(
@@ -38,7 +43,7 @@ export const TextInput = (props) => {
     {
       ...rest,
 
-      className: cn({ area, error }, [className]),
+      className: cn({ area, error, monospace }, [className]),
       type: area ? null : type,
       value,
       name,
@@ -57,8 +62,9 @@ export const TextInputPropTypes = {
   name: PropTypes.string,
   area: PropTypes.bool,
   error: PropTypes.bool,
+  monospace: PropTypes.bool,
 
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
 };
 
 
@@ -68,6 +74,9 @@ export const TextInputDefaultProps = {
   name: null,
   area: false,
   error: false,
+  monospace: false,
+
+  onChange: null,
 };
 
 
