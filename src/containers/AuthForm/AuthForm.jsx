@@ -26,7 +26,7 @@ export const AuthForm = (props) => {
 
   const dispatch = useDispatch();
 
-  const loginError = useSelector(AuthSelectors.selectError);
+  const loginError = useSelector(AuthSelectors.selectErrorWithoutRequest);
   const isLoading = useSelector(AuthSelectors.selectIsLoading);
 
 

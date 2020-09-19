@@ -7,7 +7,7 @@ import {
 } from 'redux-saga/effects';
 
 import { COOKIE_NAME } from '@/constants';
-import { sendsay } from '@/utils';
+import { sendsay, parseError } from '@/utils';
 import { AuthActions } from '@/actions';
 
 
@@ -59,7 +59,7 @@ function* login(payload) {
       },
     }));
   } catch (error) {
-    yield put(AuthActions.loginFailure({ error }));
+    yield put(AuthActions.loginFailure({ error: parseError(error) }));
   }
 }
 
@@ -70,7 +70,7 @@ function* logout() {
     yield call(setSession, null);
     yield put(AuthActions.logoutSuccess());
   } catch (error) {
-    yield put(AuthActions.logoutFailure({ error }));
+    yield put(AuthActions.logoutFailure({ error: parseError(error) }));
   }
 }
 

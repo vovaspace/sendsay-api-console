@@ -5,7 +5,7 @@ import {
   select,
 } from 'redux-saga/effects';
 
-import { sendsay } from '@/utils';
+import { sendsay, parseError } from '@/utils';
 import { ApiCallerActions } from '@/actions';
 import { ApiCallerSelectors } from '@/selectors';
 
@@ -34,7 +34,7 @@ function* callApi() {
     const response = yield call(sendsay.request, body);
     yield put(ApiCallerActions.makeCallSuccess({ response }));
   } catch (error) {
-    yield put(ApiCallerActions.makeCallFailureError({ response: error }));
+    yield put(ApiCallerActions.makeCallFailureError({ response: parseError(error) }));
   }
 }
 

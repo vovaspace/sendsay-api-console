@@ -25,11 +25,10 @@ export const ErrorCard = (props) => {
       return null;
     }
 
-    // Error without request
-    const { request, ...rest } = error;
-
     return (
-      <p className={cn('Description')}>{JSON.stringify(rest)}</p>
+      <p className={cn('Description')}>
+        {typeof error === 'string' ? error : JSON.stringify(error)}
+      </p>
     );
   }, [error]);
 
@@ -59,12 +58,7 @@ export const ErrorCardPropTypes = {
   className: PropTypes.string,
   message: PropTypes.string.isRequired,
   messageTag: PropTypes.string,
-  error: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    explain: PropTypes.string,
-    // eslint-disable-next-line react/forbid-prop-types
-    request: PropTypes.object,
-  }),
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 
