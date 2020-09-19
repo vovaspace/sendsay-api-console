@@ -1,1 +1,3 @@
-export const COOKIE_NAME = 'sendsay_session';
+export const COOKIE_NAME = {
+  session: 'sendsay_session',
+};

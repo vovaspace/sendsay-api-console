@@ -12,7 +12,7 @@ import { AuthActions } from '@/actions';
 
 
 function setSession(session) {
-  document.cookie = `${COOKIE_NAME}=${session || ''}`;
+  document.cookie = `${COOKIE_NAME.session}=${session || ''}`;
   sendsay.setSession(session);
 }
 
@@ -25,7 +25,7 @@ function* pong() {
 function* retrieveSession() {
   try {
     // Without 'call' because 'this' is lost
-    sendsay.setSessionFromCookie(COOKIE_NAME);
+    sendsay.setSessionFromCookie(COOKIE_NAME.session);
     const { account, sublogin } = yield call(pong);
 
     yield put(AuthActions.retrieveSessionSuccess({
