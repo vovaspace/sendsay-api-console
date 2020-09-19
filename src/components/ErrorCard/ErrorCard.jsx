@@ -27,7 +27,7 @@ export const ErrorCard = (props) => {
 
     return (
       <p className={cn('Description')}>
-        {typeof error === 'string' ? error : JSON.stringify(error)}
+        {typeof error === 'string' ? error : JSON.stringify(error, null, ' ')}
       </p>
     );
   }, [error]);
