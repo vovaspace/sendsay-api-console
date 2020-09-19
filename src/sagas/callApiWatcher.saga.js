@@ -1,5 +1,5 @@
 import {
-  takeEvery,
+  takeLatest,
   put,
   call,
   select,
@@ -40,5 +40,5 @@ function* callApi() {
 
 
 export function* callApiWatcher() {
-  yield takeEvery(ApiCallerActions.makeCallRequest, callApi);
+  yield takeLatest(ApiCallerActions.makeCallRequest, callApi);
 }
