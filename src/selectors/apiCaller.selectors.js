@@ -16,22 +16,6 @@ export const selectIsLoading = createSimpleSelector(
 );
 
 
-export const selectCallStatus = createSimpleSelector(
-  selectApiCaller,
-  (state) => state.callStatus,
-);
-
-export const selectIsCallError = createSimpleSelector(
-  selectCallStatus,
-  (callStatus) => callStatus === CALL_STATUS.error,
-);
-
-export const selectIsCallInvalid = createSimpleSelector(
-  selectCallStatus,
-  (callStatus) => callStatus === CALL_STATUS.invalid,
-);
-
-
 export const selectValue = createSimpleSelector(
   selectApiCaller,
   (state) => state.value,
@@ -45,4 +29,32 @@ export const selectRequestValue = createSimpleSelector(
 export const selectResponseValue = createSimpleSelector(
   selectValue,
   (value) => value.response,
+);
+
+
+export const selectStatus = createSimpleSelector(
+  selectApiCaller,
+  (state) => state.status,
+);
+
+
+export const selectRequestStatus = createSimpleSelector(
+  selectStatus,
+  (status) => status.request,
+);
+
+export const selectIsCallInvalid = createSimpleSelector(
+  selectRequestStatus,
+  (requestStatus) => requestStatus === CALL_STATUS.invalid,
+);
+
+
+export const selectResponseStatus = createSimpleSelector(
+  selectStatus,
+  (status) => status.response,
+);
+
+export const selectIsCallError = createSimpleSelector(
+  selectResponseStatus,
+  (responseStatus) => responseStatus === CALL_STATUS.error,
 );

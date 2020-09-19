@@ -6,7 +6,7 @@ import { ApiCallerActions } from '@/actions';
 
 const initialState = {
   loadingState: LOADING_STATE.notAsked,
-  callStatus: null,
+  status: { request: null, response: null },
   value: { request: '', response: '' },
 };
 
@@ -20,26 +20,33 @@ export const apiCaller = createReducer(initialState, (builder) => builder
   .addCase(ApiCallerActions.makeCallSuccess, (state, { payload: { response } }) => ({
     ...state,
     loadingState: LOADING_STATE.loaded,
-    callStatus: CALL_STATUS.success,
+    status: { request: CALL_STATUS.success, response: CALL_STATUS.success },
     value: { ...state.value, response: JSON.stringify(response, null, TAB_SIZE) },
   }))
 
-  .addCase(ApiCallerActions.makeCallFailure, (state, { payload: { response, status } }) => ({
+  .addCase(ApiCallerActions.makeCallFailureInvalid, (state) => ({
     ...state,
     loadingState: LOADING_STATE.failed,
-    callStatus: status,
-    value: { ...state.value, response: response ? JSON.stringify(response, null, TAB_SIZE) : '' },
+    status: { ...state.status, request: CALL_STATUS.invalid },
+  }))
+
+  .addCase(ApiCallerActions.makeCallFailureError, (state, { payload: { response } }) => ({
+    ...state,
+    loadingState: LOADING_STATE.failed,
+    status: { ...state.status, response: CALL_STATUS.error },
+    value: { ...state.value, response: JSON.stringify(response, null, TAB_SIZE) },
   }))
 
 
   .addCase(ApiCallerActions.setRequestValue, (state, { payload: { value } }) => ({
     ...state,
+    status: { ...state.status, request: null },
     value: { ...state.value, request: value },
   }))
 
 
   .addCase(ApiCallerActions.formatRequest, (state) => {
-    const { value } = state;
+    const { value, status } = state;
     const { request } = value;
 
     try {
@@ -47,10 +54,12 @@ export const apiCaller = createReducer(initialState, (builder) => builder
 
       return {
         ...state,
-        callStatus: null,
         value: { ...value, request: formatedRequest },
       };
     } catch (error) {
-      return { ...state, callStatus: CALL_STATUS.invalid };
+      return {
+        ...state,
+        status: { ...status, request: CALL_STATUS.invalid },
+      };
     }
   }));

@@ -5,7 +5,6 @@ import {
   select,
 } from 'redux-saga/effects';
 
-import { CALL_STATUS } from '@/constants';
 import { sendsay } from '@/utils';
 import { ApiCallerActions } from '@/actions';
 import { ApiCallerSelectors } from '@/selectors';
@@ -18,24 +17,24 @@ function* getBody() {
 
     return body;
   } catch (error) {
-    yield put(ApiCallerActions.makeCallFailure({ status: CALL_STATUS.invalid }));
     return null;
   }
 }
 
 
 function* callApi() {
+  const body = yield call(getBody);
+
+  if (!body) {
+    yield put(ApiCallerActions.makeCallFailureInvalid());
+    return;
+  }
+
   try {
-    const body = yield call(getBody);
-
-    if (!body) {
-      return;
-    }
-
     const response = yield call(sendsay.request, body);
     yield put(ApiCallerActions.makeCallSuccess({ response }));
   } catch (error) {
-    yield put(ApiCallerActions.makeCallFailure({ response: error, status: CALL_STATUS.error }));
+    yield put(ApiCallerActions.makeCallFailureError({ response: error }));
   }
 }
 
