@@ -1,6 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { LOADING_STATE, CALL_STATUS, TAB_SIZE } from '@/constants';
+import { LOADING_STATE, CALL_STATUS } from '@/constants';
+import { stringifyCall } from '@/utils';
 import { ApiCallerActions } from '@/actions';
 
 
@@ -17,24 +18,17 @@ export const apiCaller = createReducer(initialState, (builder) => builder
     loadingState: LOADING_STATE.loading,
   }))
 
-  .addCase(ApiCallerActions.makeCallSuccess, (state, { payload: { response } }) => ({
+  .addCase(ApiCallerActions.makeCallSuccess, (state, { payload: { response, status } }) => ({
     ...state,
     loadingState: LOADING_STATE.loaded,
-    status: { request: CALL_STATUS.success, response: CALL_STATUS.success },
-    value: { ...state.value, response: JSON.stringify(response, null, TAB_SIZE) },
+    status: { request: CALL_STATUS.success, response: status },
+    value: { ...state.value, response: stringifyCall(response) },
   }))
 
-  .addCase(ApiCallerActions.makeCallFailureInvalid, (state) => ({
+  .addCase(ApiCallerActions.makeCallFailure, (state) => ({
     ...state,
     loadingState: LOADING_STATE.failed,
     status: { ...state.status, request: CALL_STATUS.invalid },
-  }))
-
-  .addCase(ApiCallerActions.makeCallFailureError, (state, { payload: { response } }) => ({
-    ...state,
-    loadingState: LOADING_STATE.failed,
-    status: { ...state.status, response: CALL_STATUS.error },
-    value: { ...state.value, response: JSON.stringify(response, null, TAB_SIZE) },
   }))
 
 
@@ -50,7 +44,7 @@ export const apiCaller = createReducer(initialState, (builder) => builder
     const { request } = value;
 
     try {
-      const formatedRequest = JSON.stringify(JSON.parse(request), null, TAB_SIZE);
+      const formatedRequest = stringifyCall(JSON.parse(request));
 
       return {
         ...state,

@@ -1,13 +1,31 @@
-import { put, take } from 'redux-saga/effects';
+import { take, all, put } from 'redux-saga/effects';
 
-import { InitActions, AuthActions } from '@/actions';
+import {
+  InitActions,
+  AuthActions,
+  RequestsHistoryActions,
+} from '@/actions';
 
 
 export function* initFlow() {
   yield take(InitActions.startInit);
 
-  yield put(AuthActions.retrieveSessionRequest());
-  yield take([AuthActions.retrieveSessionSuccess, AuthActions.retrieveSessionFailure]);
+  yield all([
+    put(AuthActions.retrieveSessionRequest()),
+    put(RequestsHistoryActions.setFromLocalStorageRequest()),
+  ]);
+
+  yield all([
+    take([
+      AuthActions.retrieveSessionSuccess,
+      AuthActions.retrieveSessionFailure,
+    ]),
+
+    take([
+      RequestsHistoryActions.setFromLocalStorageSuccess,
+      RequestsHistoryActions.setFromLocalStorageFailure,
+    ]),
+  ]);
 
   yield put(InitActions.doneInit());
 }

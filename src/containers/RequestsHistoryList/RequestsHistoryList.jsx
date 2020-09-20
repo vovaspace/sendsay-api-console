@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { makeCn } from '@/utils';
+import { makeCn, stringifyCall } from '@/utils';
+import { RequestsHistoryActions, ApiCallerActions } from '@/actions';
+import { RequestsHistorySelectors } from '@/selectors';
 
 import { AppBar } from '@/components/AppBar';
 import { ScrollArea } from '@/components/ScrollArea';
@@ -19,6 +22,21 @@ export const RequestsHistoryList = (props) => {
     className,
   } = props;
 
+  const dispatch = useDispatch();
+
+  const items = useSelector(RequestsHistorySelectors.selectItems);
+
+
+  const handlePaste = useCallback((request) => {
+    dispatch(ApiCallerActions.setRequestValue({
+      value: stringifyCall(request),
+    }));
+  }, [dispatch]);
+
+  const handleClear = useCallback(() => {
+    dispatch(RequestsHistoryActions.clear());
+  }, [dispatch]);
+
 
   return (
     <AppBar
@@ -29,27 +47,19 @@ export const RequestsHistoryList = (props) => {
     >
       <ScrollArea className={cn('ScrollArea')}>
         <ul className={cn('List')}>
-          <li className={cn('ListItem')}>
-            <RequestChip
-              status="success"
-            >
-              action.name
-            </RequestChip>
-          </li>
-          <li className={cn('ListItem')}>
-            <RequestChip
-              status="success"
-            >
-              action.name
-            </RequestChip>
-          </li>
-          <li className={cn('ListItem')}>
-            <RequestChip
-              status="success"
-            >
-              action.name
-            </RequestChip>
-          </li>
+          {items.map(({ id, request, status }) => (
+            <li key={id} className={cn('ListItem')}>
+              <RequestChip
+                id={id}
+                request={request}
+                status={status}
+
+                onPaste={handlePaste}
+              >
+                {request.action || 'unknown'}
+              </RequestChip>
+            </li>
+          ))}
         </ul>
       </ScrollArea>
 
@@ -57,6 +67,9 @@ export const RequestsHistoryList = (props) => {
         <IconButton
           icon="cancel"
           hiddenLabel
+          disabled={items.length === 0}
+
+          onClick={handleClear}
         >
           Очистить историю запросов
         </IconButton>
