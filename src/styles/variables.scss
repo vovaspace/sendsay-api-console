@@ -14,6 +14,19 @@ $outerSize: 15;
 
 
 
+/* -- z-index -- */
+
+$zIndex-dropdown: 1000;
+$zIndex-sticky: 1100;
+$zIndex-fixed: 1200;
+$zIndex-backdrop: 1300;
+$zIndex-modal: 1400;
+$zIndex-popover: 1500;
+$zIndex-tooltip: 1600;
+
+
+
+
 /* -- Transitions -- */
 
 $transition-duration--fastest: 304ms;
@@ -89,6 +102,10 @@ $color-status--error: $color-red--50;
 $color-loader--blue: $color-blue--50;
 $color-loader--light: $color-light;
 
+$color-menu--main: $color-blue--50;
+$color-menu--destructive: $color-red--50;
+$color-menu--lightText: $color-light;
+
 
 
 
@@ -96,6 +113,7 @@ $color-loader--light: $color-light;
 
 $shadow-outline--blue: 0 0 0 rem(2) $color-blue--10;
 $shadow-outline--dark: 0 0 0 rem(2) $color-translucentDark--20;
+$shadow-outline--destructive: 0 0 0 rem(2) $color-red--30;
 
 $shadow-error: 0 0 rem(5) 0 $color-red--30;
 
