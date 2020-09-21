@@ -97,4 +97,6 @@ $shadow-outline--dark: 0 0 0 rem(2) $color-translucentDark--20;
 
 $shadow-error: 0 0 rem(5) 0 $color-red--30;
 
-$shadow-elevation: 0 rem(4) rem(10) 0 $color-translucentDark--10;
+$shadow-elevation--10: 0 rem(1) rem(2) 0 $color-translucentDark--10;
+$shadow-elevation--20: 0 rem(1) rem(4) 0 $color-translucentDark--25;
+$shadow-elevation--50: 0 rem(4) rem(10) 0 $color-translucentDark--10;
