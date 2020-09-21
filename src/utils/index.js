@@ -1,3 +1,4 @@
+export * from './ChildrenOfTypePropType.util';
 export * from './ChildrenPropType.util';
 export * from './combineCases.util';
 export * from './createSimpleSelector.util';
