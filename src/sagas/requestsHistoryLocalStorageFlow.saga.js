@@ -42,6 +42,7 @@ export function* requestsHistoryLocalStorageFlow() {
 
   yield debounce(DEBOUNCE_TIME.writeLocalStorage, [
     RequestsHistoryActions.addItem,
+    RequestsHistoryActions.removeItem,
     RequestsHistoryActions.clear,
   ], writeToLocalStorage);
 }

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, batch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { makeCn, stringifyCall } from '@/utils';
@@ -33,6 +33,21 @@ export const RequestsHistoryList = (props) => {
     }));
   }, [dispatch]);
 
+  const handleCall = useCallback((request) => {
+    batch(() => {
+      handlePaste(request);
+      dispatch(ApiCallerActions.makeCallRequest());
+    });
+  }, [handlePaste, dispatch]);
+
+  const handleCopy = useCallback((request) => {
+    console.log('copy', request);
+  }, []);
+
+  const handleRemove = useCallback((id) => {
+    dispatch(RequestsHistoryActions.removeItem({ id }));
+  }, [dispatch]);
+
   const handleClear = useCallback(() => {
     dispatch(RequestsHistoryActions.clear());
   }, [dispatch]);
@@ -55,6 +70,9 @@ export const RequestsHistoryList = (props) => {
                 status={status}
 
                 onPaste={handlePaste}
+                onCall={handleCall}
+                onCopy={handleCopy}
+                onRemove={handleRemove}
               >
                 {request.action || 'unknown'}
               </RequestChip>

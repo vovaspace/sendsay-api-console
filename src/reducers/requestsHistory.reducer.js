@@ -27,6 +27,11 @@ export const requestsHistory = createReducer(initialState, (builder) => builder
     ].slice(0, REQUESTS_HISTORY.volume), // No more than the volume
   }))
 
+  .addCase(RequestsHistoryActions.removeItem, (state, { payload: { id } }) => ({
+    ...state,
+    items: state.items.filter((item) => item.id !== id),
+  }))
+
 
   .addCase(RequestsHistoryActions.clear, (state) => ({
     ...state,

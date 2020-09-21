@@ -1,20 +1,27 @@
 .RequestChip {
+  $buttonMenuWidth: 24;
+  $buttonMenuOffset: 2;
+
+
+  position: relative;
+
+  display: flex;
   overflow: hidden;
 
   height: rem(30);
 
   border-radius: rem(5);
-  box-shadow: 0 rem(1) rem(2) 0 $color-translucentDark--10;
+  box-shadow: $shadow-elevation--10;
 
 
   &:hover {
-    box-shadow: 0 rem(1) rem(4) 0 $color-translucentDark--25;
+    box-shadow: $shadow-elevation--20;
   }
 
 
   &-Button {
     height: 100%;
-    padding: 0 rem(10);
+    padding: 0 rem($buttonMenuWidth + (2 * $buttonMenuOffset)) 0 rem(10);
 
     border: none;
     background-color: $color-background--light;
@@ -71,5 +78,16 @@
         background-color: $color-status--error;
       }
     }
+  }
+
+
+  &-ButtonMenu {
+    position: absolute;
+    top: 50%;
+    right: rem($buttonMenuOffset);
+
+    width: rem($buttonMenuWidth);
+
+    transform: translateY(-50%);
   }
 }
