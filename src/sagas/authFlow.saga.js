@@ -34,7 +34,7 @@ function* retrieveSession() {
         sublogin: account === sublogin ? null : sublogin,
       },
     }));
-  } catch (error) {
+  } catch {
     yield put(AuthActions.retrieveSessionFailure({ error: null }));
   }
 }

@@ -17,7 +17,7 @@ function* getRequest() {
     const body = yield call(JSON.parse, request);
 
     return body;
-  } catch (error) {
+  } catch {
     return null;
   }
 }
