@@ -6,10 +6,10 @@ import { makeCn } from '@/utils';
 
 import { Icon } from '@/components/Icon';
 
-import './DragLever.scss';
+import styles from './DragLever.scss';
 
 
-const cn = makeCn('DragLever');
+const cn = makeCn('DragLever', styles);
 
 
 export const DragLever = (props) => {

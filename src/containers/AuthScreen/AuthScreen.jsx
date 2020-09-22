@@ -6,10 +6,10 @@ import { Logotype } from '@/components/Logotype';
 import { Copyright } from '@/components/Copyright';
 import { AuthForm } from '@/containers/AuthForm';
 
-import './AuthScreen.scss';
+import styles from './AuthScreen.scss';
 
 
-const cn = makeCn('AuthScreen');
+const cn = makeCn('AuthScreen', styles);
 
 
 export const AuthScreen = () => (

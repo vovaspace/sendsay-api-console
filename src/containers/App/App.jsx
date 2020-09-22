@@ -10,10 +10,10 @@ import { Loader } from '@/components/Loader';
 import { AppScreen } from '@/containers/AppScreen';
 import { AuthScreen } from '@/containers/AuthScreen';
 
-import './App.scss';
+import styles from './App.scss';
 
 
-const cn = makeCn('App');
+const cn = makeCn('App', styles);
 
 
 export const App = () => {

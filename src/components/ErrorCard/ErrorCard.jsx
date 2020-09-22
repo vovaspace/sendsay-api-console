@@ -5,10 +5,10 @@ import { makeCn } from '@/utils';
 
 import { Icon } from '@/components/Icon';
 
-import './ErrorCard.scss';
+import styles from './ErrorCard.scss';
 
 
-const cn = makeCn('ErrorCard');
+const cn = makeCn('ErrorCard', styles);
 
 
 export const ErrorCard = (props) => {

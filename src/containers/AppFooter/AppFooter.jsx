@@ -11,10 +11,10 @@ import { Button } from '@/components/Button';
 import { Copyright } from '@/components/Copyright';
 import { IconButton } from '@/components/IconButton';
 
-import './AppFooter.scss';
+import styles from './AppFooter.scss';
 
 
-const cn = makeCn('AppFooter');
+const cn = makeCn('AppFooter', styles);
 
 
 export const AppFooter = (props) => {

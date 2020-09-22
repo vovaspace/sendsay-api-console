@@ -12,10 +12,10 @@ import { Logotype } from '@/components/Logotype';
 import { TextLogotype } from '@/components/TextLogotype';
 import { UserChip } from '@/components/UserChip';
 
-import './AppHeader.scss';
+import styles from './AppHeader.scss';
 
 
-const cn = makeCn('AppHeader');
+const cn = makeCn('AppHeader', styles);
 
 
 export const AppHeader = (props) => {

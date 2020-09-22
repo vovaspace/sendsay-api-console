@@ -6,6 +6,9 @@
     "node": true,
     "es6": true
   },
+  "globals": {
+    "IS_DEVELOPMENT": true
+  },
   "settings": {
     "import/resolver": {
       "node": {},

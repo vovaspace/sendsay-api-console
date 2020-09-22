@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
 
-import './Icon.scss';
+import styles from './Icon.scss';
 
 
 // Icons are stored in src/resources/icons
@@ -13,7 +13,7 @@ const iconFiels = require.context('../../resources/icons', true, /.*\.svg$/);
 iconFiels.keys().forEach(iconFiels);
 
 
-const cn = makeCn('Icon');
+const cn = makeCn('Icon', styles);
 
 
 export const Icon = (props) => {

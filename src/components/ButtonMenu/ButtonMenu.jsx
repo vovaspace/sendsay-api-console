@@ -15,10 +15,10 @@ import { Icon } from '@/components/Icon';
 import { Popper, PopperPropTypes } from '@/components/Popper';
 import { MenuList, MenuListPropTypes } from '@/components/MenuList';
 
-import './ButtonMenu.scss';
+import styles from './ButtonMenu.scss';
 
 
-const cn = makeCn('ButtonMenu');
+const cn = makeCn('ButtonMenu', styles);
 
 
 export const ButtonMenu = (props) => {

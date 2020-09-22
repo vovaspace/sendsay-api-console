@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
 
-import './Logotype.scss';
+import styles from './Logotype.scss';
 
 
-const cn = makeCn('Logotype');
+const cn = makeCn('Logotype', styles);
 
 
 export const Logotype = (props) => {

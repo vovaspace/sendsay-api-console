@@ -6,7 +6,7 @@ import { makeCn } from '@/utils';
 import { Icon, IconPropTypes } from '@/components/Icon';
 import { Loader } from '@/components/Loader';
 
-import './IconButton.scss';
+import styles from './IconButton.scss';
 
 
 const ICON_POSITION = {
@@ -15,7 +15,7 @@ const ICON_POSITION = {
 };
 
 
-const cn = makeCn('IconButton');
+const cn = makeCn('IconButton', styles);
 
 
 export const IconButton = (props) => {

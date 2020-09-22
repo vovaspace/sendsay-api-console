@@ -1,3 +1,4 @@
+export * from './bemNaming.constant';
 export * from './callStatus.constant';
 export * from './cookieName.constant';
 export * from './debounceTime.constant';

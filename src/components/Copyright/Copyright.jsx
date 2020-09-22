@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
 
-import './Copyright.scss';
+import styles from './Copyright.scss';
 
 
-const cn = makeCn('Copyright');
+const cn = makeCn('Copyright', styles);
 
 
 export const Copyright = (props) => {

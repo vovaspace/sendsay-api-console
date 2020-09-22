@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
 
-import './TextInput.scss';
+import styles from './TextInput.scss';
 
 
-const cn = makeCn('TextInput');
+const cn = makeCn('TextInput', styles);
 
 
 export const TextInput = (props) => {

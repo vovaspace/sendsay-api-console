@@ -5,10 +5,10 @@ import { makeCn } from '@/utils';
 
 import { Loader } from '@/components/Loader';
 
-import './Button.scss';
+import styles from './Button.scss';
 
 
-const cn = makeCn('Button');
+const cn = makeCn('Button', styles);
 
 
 export const Button = (props) => {

@@ -11,10 +11,10 @@ import { ScrollArea } from '@/components/ScrollArea';
 import { RequestChip } from '@/components/RequestChip';
 import { IconButton } from '@/components/IconButton';
 
-import './RequestsHistoryList.scss';
+import styles from './RequestsHistoryList.scss';
 
 
-const cn = makeCn('RequestsHistoryList');
+const cn = makeCn('RequestsHistoryList', styles);
 
 
 export const RequestsHistoryList = (props) => {

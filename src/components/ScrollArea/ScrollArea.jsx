@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { makeCn, ChildrenPropType } from '@/utils';
 
-import './ScrollArea.scss';
+import styles from './ScrollArea.scss';
 
 
-const cn = makeCn('ScrollArea');
+const cn = makeCn('ScrollArea', styles);
 
 
 export const ScrollArea = (props) => {

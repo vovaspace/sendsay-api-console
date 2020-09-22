@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { makeCn, ChildrenPropType, StylePropType } from '@/utils';
 
-import './Field.scss';
+import styles from './Field.scss';
 
 
-const cn = makeCn('Field');
+const cn = makeCn('Field', styles);
 
 
 export const Field = (props) => {

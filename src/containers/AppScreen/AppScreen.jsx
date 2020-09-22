@@ -7,10 +7,10 @@ import { RequestsHistoryList } from '@/containers/RequestsHistoryList';
 import { InputOutput } from '@/containers/InputOutput';
 import { AppFooter } from '@/containers/AppFooter';
 
-import './AppScreen.scss';
+import styles from './AppScreen.scss';
 
 
-const cn = makeCn('AppScreen');
+const cn = makeCn('AppScreen', styles);
 
 
 export const AppScreen = () => (

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
 
-import './UserChip.scss';
+import styles from './UserChip.scss';
 
 
-const cn = makeCn('UserChip');
+const cn = makeCn('UserChip', styles);
 
 
 export const UserChip = (props) => {

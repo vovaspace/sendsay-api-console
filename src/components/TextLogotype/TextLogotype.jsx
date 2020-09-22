@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
 
-import './TextLogotype.scss';
+import styles from './TextLogotype.scss';
 
 
-const cn = makeCn('TextLogotype');
+const cn = makeCn('TextLogotype', styles);
 
 
 export const TextLogotype = (props) => {

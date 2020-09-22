@@ -13,10 +13,10 @@ import { ErrorCard } from '@/components/ErrorCard';
 
 import { validate } from './validate';
 
-import './AuthForm.scss';
+import styles from './AuthForm.scss';
 
 
-const cn = makeCn('AuthForm');
+const cn = makeCn('AuthForm', styles);
 
 
 export const AuthForm = (props) => {
@@ -105,7 +105,7 @@ export const AuthForm = (props) => {
       />
 
       <Button
-        className={cn('Item', { alignedLeft: true })}
+        className={cn('Item')}
         type="submit"
         disabled={Boolean(hasSubmitted && formErrors)}
         loading={isLoading}

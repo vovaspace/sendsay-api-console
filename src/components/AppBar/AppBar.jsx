@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { makeCn, ChildrenPropType } from '@/utils';
 
-import './AppBar.scss';
+import styles from './AppBar.scss';
 
 
-const cn = makeCn('AppBar');
+const cn = makeCn('AppBar', styles);
 
 
 export const AppBar = (props) => {

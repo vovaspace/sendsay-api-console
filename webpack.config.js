@@ -1,5 +1,6 @@
 const path = require('path');
 
+const { DefinePlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -21,6 +22,25 @@ const PATH = {
 };
 
 const PORT = 3000;
+
+
+const commonStyleLoaders = [
+  {
+    loader: 'postcss-loader',
+    options: {
+      plugins: [
+        autoprefixer(),
+      ],
+    },
+  },
+  'sass-loader',
+  {
+    loader: 'sass-resources-loader',
+    options: {
+      resources: `./${PATH.src}/shared.scss`,
+    },
+  },
+];
 
 
 module.exports = (env) => {
@@ -60,27 +80,35 @@ module.exports = (env) => {
         },
 
 
-        /* STYLES */
+        /* BASE STYLES */
         {
           test: /\.scss$/,
+          exclude: [
+            /(components|containers).*\.scss$/,
+          ],
           use: [
             isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             'css-loader',
+            ...commonStyleLoaders,
+          ],
+        },
+
+
+        /* STYLE MODULES */
+        {
+          test: /(components|containers).*\.scss$/,
+          use: [
+            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
-              loader: 'postcss-loader',
+              loader: 'css-loader',
               options: {
-                plugins: [
-                  autoprefixer(),
-                ],
+                modules: {
+                  mode: 'local',
+                  localIdentName: isDev ? '[local]___[hash:base64:5]' : '[hash:base64]',
+                },
               },
             },
-            'sass-loader',
-            {
-              loader: 'sass-resources-loader',
-              options: {
-                resources: `./${PATH.src}/shared.scss`,
-              },
-            },
+            ...commonStyleLoaders,
           ],
         },
 
@@ -134,6 +162,10 @@ module.exports = (env) => {
             to: `${PATH.static}/assets`,
           },
         ],
+      }),
+
+      new DefinePlugin({
+        IS_DEVELOPMENT: isDev,
       }),
     ],
 

@@ -9,10 +9,10 @@ import { ApiCallerSelectors } from '@/selectors';
 import { TextField } from '@/components/TextField';
 import { DragLever } from '@/components/DragLever';
 
-import './InputOutput.scss';
+import styles from './InputOutput.scss';
 
 
-const cn = makeCn('InputOutput');
+const cn = makeCn('InputOutput', styles);
 
 
 export const InputOutput = (props) => {

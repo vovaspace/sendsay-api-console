@@ -9,8 +9,6 @@ import { MenuListContext } from './context';
 import { MenuListItem } from './MenuListItem';
 import { MenuListDivider } from './MenuListDivider';
 
-import './MenuList.scss';
-
 
 // eslint-disable-next-line prefer-arrow-callback
 export const MenuList = forwardRef(function MenuList(props, ref) {

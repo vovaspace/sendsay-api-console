@@ -7,10 +7,10 @@ import { makeCn } from '@/utils';
 import { ButtonMenu } from '@/components/ButtonMenu';
 import { MenuListItem, MenuListDivider } from '@/components/MenuList';
 
-import './RequestChip.scss';
+import styles from './RequestChip.scss';
 
 
-const cn = makeCn('RequestChip');
+const cn = makeCn('RequestChip', styles);
 
 
 export const RequestChip = (props) => {
