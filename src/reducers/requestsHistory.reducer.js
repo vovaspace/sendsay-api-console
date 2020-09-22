@@ -11,7 +11,7 @@ const initialState = {
 
 
 export const requestsHistory = createReducer(initialState, (builder) => builder
-  .addCase(RequestsHistoryActions.setFromLocalStorageSuccess, (state, { payload: { items } }) => ({
+  .addCase(RequestsHistoryActions.setItems, (state, { payload: { items } }) => ({
     ...state,
     items,
   }))

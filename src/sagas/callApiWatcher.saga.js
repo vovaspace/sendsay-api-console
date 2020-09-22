@@ -14,9 +14,7 @@ import { ApiCallerSelectors } from '@/selectors';
 function* getRequest() {
   try {
     const request = yield select(ApiCallerSelectors.selectRequestValue);
-    const body = yield call(JSON.parse, request);
-
-    return body;
+    return JSON.parse(request);
   } catch {
     return null;
   }

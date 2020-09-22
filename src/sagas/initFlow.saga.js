@@ -3,7 +3,7 @@ import { take, all, put } from 'redux-saga/effects';
 import {
   InitActions,
   AuthActions,
-  RequestsHistoryActions,
+  LocalStorageActions,
 } from '@/actions';
 
 
@@ -12,7 +12,7 @@ export function* initFlow() {
 
   yield all([
     put(AuthActions.retrieveSessionRequest()),
-    put(RequestsHistoryActions.setFromLocalStorageRequest()),
+    put(LocalStorageActions.startSetting()),
   ]);
 
   yield all([
@@ -21,10 +21,7 @@ export function* initFlow() {
       AuthActions.retrieveSessionFailure,
     ]),
 
-    take([
-      RequestsHistoryActions.setFromLocalStorageSuccess,
-      RequestsHistoryActions.setFromLocalStorageFailure,
-    ]),
+    take(LocalStorageActions.doneSetting),
   ]);
 
   yield put(InitActions.doneInit());
