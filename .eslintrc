@@ -19,6 +19,7 @@
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
     "react/jsx-props-no-spreading": "off",
-    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0, "maxBOF": 0 }]
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0, "maxBOF": 0 }],
+    "no-empty": ["error", { "allowEmptyCatch": true }]
   }
 }
