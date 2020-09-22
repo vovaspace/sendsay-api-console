@@ -14,3 +14,10 @@
 
   border: none;
 }
+
+
+@mixin breakpoint-up($width) {
+  @media screen and (min-width: rem($width)) {
+    @content;
+  }
+}
