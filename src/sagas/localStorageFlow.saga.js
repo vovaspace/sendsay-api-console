@@ -8,7 +8,7 @@ import {
   debounce,
 } from 'redux-saga/effects';
 
-import { LOCAL_STORAGE_KEY, DEBOUNCE_TIME } from '@/constants';
+import { LOCAL_STORAGE_KEY, TIMEOUT } from '@/constants';
 import { LocalStorageActions, RequestsHistoryActions } from '@/actions';
 import { RequestsHistorySelectors } from '@/selectors';
 
@@ -43,7 +43,7 @@ function* write(key, selector, pattern) {
     localStorage.setItem(key, JSON.stringify(items));
   }
 
-  yield spawn(debounce, DEBOUNCE_TIME.writeLocalStorage, pattern, worker);
+  yield spawn(debounce, TIMEOUT.writeLocalStorage, pattern, worker);
 }
 
 
