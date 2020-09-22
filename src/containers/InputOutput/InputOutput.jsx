@@ -1,15 +1,18 @@
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { makeCn, getElementInnerWidth } from '@/utils';
-import { ApiCallerActions } from '@/actions';
-import { ApiCallerSelectors } from '@/selectors';
+import { makeCn } from '@/utils';
+import { ApiCallerActions, UserInterfaceActions } from '@/actions';
+import { ApiCallerSelectors, UserInterfaceSelectors } from '@/selectors';
 
 import { TextField } from '@/components/TextField';
 import { DragLever } from '@/components/DragLever';
 
 import styles from './InputOutput.scss';
+
+
+const MIN_FIELD_WIDTH = Number.parseInt(styles.$minFieldWidth, 10);
 
 
 const cn = makeCn('InputOutput', styles);
@@ -27,24 +30,32 @@ export const InputOutput = (props) => {
   const isCallInvalid = useSelector(ApiCallerSelectors.selectIsCallInvalid);
   const isCallError = useSelector(ApiCallerSelectors.selectIsCallError);
 
-  const [fieldsSize, setFieldsSize] = useState({ inputWidth: 50, outputWidth: 50 });
+  const inputOutputFieldsRatio = useSelector(UserInterfaceSelectors.selectInputOutputFieldsRatio);
 
   const rootRef = useRef(null);
+  const inputFieldRef = useRef(null);
+  const outputFieldRef = useRef(null);
 
 
   const handleDrag = useCallback((x) => {
-    const rootWidth = getElementInnerWidth(rootRef.current);
+    const { current: { offsetWidth: inputFieldWidth } } = inputFieldRef;
+    const { current: { offsetWidth: outputFieldWidth } } = outputFieldRef;
+
+    if (
+      x === 0
+      || (x < 0 && inputFieldWidth <= MIN_FIELD_WIDTH)
+      || (x > 0 && outputFieldWidth <= MIN_FIELD_WIDTH)
+    ) {
+      return;
+    }
+
+    const { current: { offsetWidth: rootWidth } } = rootRef;
     const shiftInPercent = (x / rootWidth) * 100;
 
-    setFieldsSize(({ inputWidth }) => {
-      const newInputWidth = inputWidth + shiftInPercent;
-
-      return ({
-        inputWidth: newInputWidth,
-        outputWidth: 100 - newInputWidth,
-      });
-    });
-  }, []);
+    dispatch(UserInterfaceActions.shiftInputOutputFieldsRatio({
+      size: shiftInPercent,
+    }));
+  }, [dispatch]);
 
 
   const handleInputChange = useCallback((value) => {
@@ -58,7 +69,8 @@ export const InputOutput = (props) => {
       className={cn(null, [className])}
     >
       <TextField
-        style={{ flexBasis: `${fieldsSize.inputWidth}%` }}
+        ref={inputFieldRef}
+        style={{ flexBasis: `${inputOutputFieldsRatio}%` }}
         className={cn('Field', { type: 'input' })}
         inputClassName={cn('Input')}
         value={requestValue}
@@ -73,7 +85,8 @@ export const InputOutput = (props) => {
       />
 
       <TextField
-        style={{ flexBasis: `${fieldsSize.outputWidth}%` }}
+        ref={outputFieldRef}
+        style={{ flexBasis: `${100 - inputOutputFieldsRatio}%` }}
         className={cn('Field', { type: 'output' })}
         inputClassName={cn('Input')}
         value={responseValue}

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Field, FieldPropTypes } from '@/components/Field';
 import { TextInput, TextInputPropTypes } from '@/components/TextInput';
 
 
-export const TextField = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+export const TextField = forwardRef(function TextField(props, ref) {
   const {
     style,
     className,
@@ -22,6 +23,7 @@ export const TextField = (props) => {
 
   return (
     <Field
+      ref={ref}
       style={style}
       className={className}
       label={label}
@@ -36,7 +38,7 @@ export const TextField = (props) => {
       />
     </Field>
   );
-};
+});
 
 
 export const TextFieldPropTypes = {

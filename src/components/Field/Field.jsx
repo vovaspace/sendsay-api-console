@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { makeCn, ChildrenPropType, StylePropType } from '@/utils';
@@ -9,7 +9,8 @@ import styles from './Field.scss';
 const cn = makeCn('Field', styles);
 
 
-export const Field = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+export const Field = forwardRef(function Field(props, ref) {
   const {
     children,
     style,
@@ -23,7 +24,7 @@ export const Field = (props) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label style={style} className={cn(null, [className])}>
+    <label ref={ref} style={style} className={cn(null, [className])}>
       <span className={cn('Label', { error, shrinked: shrinkedLabel })}>
         {label}
         {!required && <span className={cn('OptionalBadge')}>Опционально</span>}
@@ -32,7 +33,7 @@ export const Field = (props) => {
       {children}
     </label>
   );
-};
+});
 
 
 export const FieldPropTypes = {

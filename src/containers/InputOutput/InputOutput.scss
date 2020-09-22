@@ -1,9 +1,14 @@
+$minFieldWidth: 240 + $outerSize;
+$fieldsDistance: 10;
+$minNoScrollWidth: (2 * $minFieldWidth ) + $fieldsDistance;
+
+
+:export {
+  $minFieldWidth: $minFieldWidth;
+}
+
+
 .InputOutput {
-  $minFieldWidth: 240;
-  $fieldsDistance: 10;
-  $minNoScrollWidth: (2 * $minFieldWidth ) + (2 * $outerSize) + $fieldsDistance;
-
-
   display: flex;
   overflow: auto;
 
@@ -14,7 +19,7 @@
   &-Field {
     flex-grow: 1;
     flex-shrink: 1;
-    min-width: rem($minFieldWidth + $outerSize);
+    min-width: rem($minFieldWidth);
     height: 100%;
     min-height: rem(520);
 

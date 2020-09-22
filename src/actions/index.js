@@ -3,6 +3,7 @@ import * as AuthActions from './auth.actions';
 import * as InitActions from './init.actions';
 import * as LocalStorageActions from './localStorage.actions';
 import * as RequestsHistoryActions from './requestsHistory.actions';
+import * as UserInterfaceActions from './userInterface.actions';
 
 
 export {
@@ -11,4 +12,5 @@ export {
   InitActions,
   LocalStorageActions,
   RequestsHistoryActions,
+  UserInterfaceActions,
 };

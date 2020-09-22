@@ -9,8 +9,8 @@ import {
 } from 'redux-saga/effects';
 
 import { LOCAL_STORAGE_KEY, TIMEOUT } from '@/constants';
-import { LocalStorageActions, RequestsHistoryActions } from '@/actions';
-import { RequestsHistorySelectors } from '@/selectors';
+import { LocalStorageActions, RequestsHistoryActions, UserInterfaceActions } from '@/actions';
+import { RequestsHistorySelectors, UserInterfaceSelectors } from '@/selectors';
 
 
 function* set(key, successActionCreator) {
@@ -39,11 +39,11 @@ function* setAll(setters) {
 
 function* write(key, selector, pattern) {
   function* worker() {
-    const items = yield select(selector);
-    localStorage.setItem(key, JSON.stringify(items));
+    const value = yield select(selector);
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
-  yield spawn(debounce, TIMEOUT.writeLocalStorage, pattern, worker);
+  yield debounce(TIMEOUT.writeLocalStorage, pattern, worker);
 }
 
 
@@ -57,6 +57,10 @@ export function* localStorageFlow() {
       LOCAL_STORAGE_KEY.requestsHistory,
       (items) => RequestsHistoryActions.setItems({ items }),
     ],
+    [
+      LOCAL_STORAGE_KEY.userInterface,
+      (state) => UserInterfaceActions.setState(state),
+    ],
   ]);
 
   yield put(LocalStorageActions.doneSetting());
@@ -64,13 +68,23 @@ export function* localStorageFlow() {
 
   /* Writing Flow */
 
-  yield write(
+  yield spawn(
+    write,
     LOCAL_STORAGE_KEY.requestsHistory,
     RequestsHistorySelectors.selectItems,
     [
       RequestsHistoryActions.addItem,
       RequestsHistoryActions.removeItem,
       RequestsHistoryActions.clear,
+    ],
+  );
+
+  yield spawn(
+    write,
+    LOCAL_STORAGE_KEY.userInterface,
+    UserInterfaceSelectors.selectUserInterface,
+    [
+      UserInterfaceActions.shiftInputOutputFieldsRatio,
     ],
   );
 }
