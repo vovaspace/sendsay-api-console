@@ -14,7 +14,12 @@
     "function-linear-gradient-no-nonstandard-direction": true,
 
     "unit-no-unknown": true,
-    "property-no-unknown": true,
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreSelectors": [":export"],
+      },
+    ],
 
     "declaration-block-no-duplicate-properties": true,
     "declaration-block-no-shorthand-property-overrides": true,
@@ -22,7 +27,13 @@
     "block-no-empty": true,
     "comment-no-empty": true,
 
-    "selector-pseudo-class-no-unknown": true,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["export"]
+      }
+    ],
+
     "selector-pseudo-element-no-unknown": true,
     "selector-type-no-unknown": true,
 
