@@ -3,7 +3,6 @@
     "stylelint-at-rule-no-children",
     "stylelint-order"
   ],
-  "ignoreFiles": "src/styles/**",
   "rules": {
     "string-no-newline": true,
 
