@@ -16,6 +16,7 @@ export const DragLever = (props) => {
   const {
     className,
     keyboardMoveSize,
+    keyboardMoveShiftMultiplier,
 
     onDrag,
   } = props;
@@ -40,27 +41,31 @@ export const DragLever = (props) => {
 
 
   const handleKeyDown = useCallback((event) => {
+    const moveSize = event.shiftKey
+      ? keyboardMoveSize * keyboardMoveShiftMultiplier
+      : keyboardMoveSize;
+
     switch (event.key) {
       case KEYBOARD_KEY.arrowUp:
-        onDrag(0, -keyboardMoveSize);
+        onDrag(0, -moveSize);
         break;
 
       case KEYBOARD_KEY.arrowRight:
-        onDrag(keyboardMoveSize, 0);
+        onDrag(moveSize, 0);
         break;
 
       case KEYBOARD_KEY.arrowDown:
-        onDrag(0, keyboardMoveSize);
+        onDrag(0, moveSize);
         break;
 
       case KEYBOARD_KEY.arrowLeft:
-        onDrag(-keyboardMoveSize, 0);
+        onDrag(-moveSize, 0);
         break;
 
       default:
         break;
     }
-  }, [keyboardMoveSize, onDrag]);
+  }, [keyboardMoveSize, keyboardMoveShiftMultiplier, onDrag]);
 
 
   return (
@@ -85,6 +90,7 @@ export const DragLever = (props) => {
 export const DragLeverPropTypes = {
   className: PropTypes.string,
   keyboardMoveSize: PropTypes.number,
+  keyboardMoveShiftMultiplier: PropTypes.number,
 
   onDrag: PropTypes.func.isRequired,
 };
@@ -93,6 +99,7 @@ export const DragLeverPropTypes = {
 export const DragLeverDefaultProps = {
   className: null,
   keyboardMoveSize: 10,
+  keyboardMoveShiftMultiplier: 8,
 };
 
 
