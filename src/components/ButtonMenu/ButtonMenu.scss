@@ -34,7 +34,7 @@
   &-Popper {
     z-index: $zIndex-dropdown;
 
-    border-radius: rem(3);
+    border-radius: rem($borderRadius-small);
     background-color: $color-background--light;
     box-shadow: $shadow-elevation--20;
   }

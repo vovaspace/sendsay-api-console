@@ -6,7 +6,7 @@
   padding: 0 rem(15);
 
   border: rem(1) solid $color-border;
-  border-radius: rem(5);
+  border-radius: rem($borderRadius-medium);
 
 
   &-Item {

@@ -8,7 +8,7 @@
 
   color: $color-button--text;
   border: none; // Reset button style
-  border-radius: rem(5);
+  border-radius: rem($borderRadius-medium);
   background: $mainBackground;
 
   font-weight: 500;

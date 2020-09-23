@@ -29,7 +29,7 @@
     pointer-events: none;
 
     opacity: 0;
-    border-radius: rem(5);
+    border-radius: rem($borderRadius-medium);
     box-shadow: $shadow-outline--blue;
   }
 

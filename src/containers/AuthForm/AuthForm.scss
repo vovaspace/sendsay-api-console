@@ -2,7 +2,7 @@
   max-width: rem(520);
   padding: rem(40) rem(30);
 
-  border-radius: rem(5);
+  border-radius: rem($borderRadius-medium);
   background-color: $color-background--light;
   box-shadow: $shadow-elevation--50;
 
