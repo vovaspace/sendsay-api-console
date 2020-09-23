@@ -1,4 +1,4 @@
-/* -- Text -- */
+// -- Text --
 
 $fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI",
              "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -7,14 +7,14 @@ $fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI",
 
 
 
-/* -- Grid -- */
+// -- Grid --
 
 $outerSize: 15;
 
 
 
 
-/* -- z-index -- */
+// -- z-index --
 
 $zIndex-dropdown: 1000;
 $zIndex-sticky: 1100;
@@ -27,7 +27,7 @@ $zIndex-tooltip: 1600;
 
 
 
-/* -- Transitions -- */
+// -- Transitions --
 
 $transition-duration--fastest: 304ms;
 $transition-duration--fast: 656ms;
@@ -44,7 +44,7 @@ $transition-timingFunction--linear: linear;
 
 
 
-/* -- Base Colors -- */
+// -- Base Colors --
 
 $color-light: #ffffff;
 $color-dark: #0d0d0d;
@@ -73,7 +73,7 @@ $color-blue--30: #45a5ff;
 $color-blue--50: #0055fb;
 
 
-/* -- UI Colors -- */
+// -- UI Colors --
 
 $color-background--root: $color-gray--40;
 $color-background--dark: $color-gray--50;
@@ -109,7 +109,7 @@ $color-menu--lightText: $color-light;
 
 
 
-/* Shadows */
+// -- Shadows --
 
 $shadow-outline--blue: 0 0 0 rem(2) $color-blue--10;
 $shadow-outline--dark: 0 0 0 rem(2) $color-translucentDark--20;
