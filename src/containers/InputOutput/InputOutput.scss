@@ -1,26 +1,33 @@
-$minFieldWidth: 240 + $outerSize;
+$minFieldWidth: 240;
 $fieldsDistance: 10;
-$minNoScrollWidth: (2 * $minFieldWidth ) + $fieldsDistance;
+$minNoScrollWidth: (2 * $minFieldWidth ) + (2 * $outerSize) + $fieldsDistance;
 
 
 :export {
-  $minFieldWidth: $minFieldWidth;
+  var-min-field-width: $minFieldWidth;
 }
 
 
 .InputOutput {
-  display: flex;
   overflow: auto;
+  height: rem(1); // Safari Inner height fix
 
-  padding-top: rem(10);
-  padding-bottom: rem(15);
+
+  &-Inner {
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+    min-width: rem($minNoScrollWidth);
+    min-height: 100%;
+    padding: rem(10) rem($outerSize) rem(15);
+  }
 
 
   &-Field {
     flex-grow: 1;
     flex-shrink: 1;
     min-width: rem($minFieldWidth);
-    height: 100%;
     min-height: rem(520);
 
 
@@ -28,7 +35,6 @@ $minNoScrollWidth: (2 * $minFieldWidth ) + $fieldsDistance;
 
       &_input {
         order: 1;
-        padding-left: rem($outerSize);
         margin-right: rem($fieldsDistance / 2);
 
         @include breakpoint-up($minNoScrollWidth) {
@@ -38,7 +44,6 @@ $minNoScrollWidth: (2 * $minFieldWidth ) + $fieldsDistance;
 
       &_output {
         order: 3;
-        padding-right: rem($outerSize);
         margin-left: rem($fieldsDistance / 2);
 
         @include breakpoint-up($minNoScrollWidth) {
