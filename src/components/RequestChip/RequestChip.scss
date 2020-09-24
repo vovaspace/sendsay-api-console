@@ -1,12 +1,12 @@
+$buttonMenuWidth: 20;
+$buttonMenuOffset: 4;
+
+
 .RequestChip {
-  $buttonMenuWidth: 24;
-  $buttonMenuOffset: 2;
-
-
   position: relative;
 
   display: flex;
-  overflow: hidden;
+  // overflow: hidden;
 
   height: rem(30);
 
@@ -23,12 +23,14 @@
     height: 100%;
     padding: 0 rem($buttonMenuWidth + (2 * $buttonMenuOffset)) 0 rem(10);
 
-    border: none;
+    border: none; // Reset button style
+    border-radius: rem($borderRadius-medium);
     background-color: $color-background--light;
 
 
     @include focus-visible() {
       outline: none;
+      box-shadow: $shadow-outline--blue;
     }
   }
 
@@ -83,11 +85,11 @@
 
   &-ButtonMenu {
     position: absolute;
-    top: 50%;
-    right: rem($buttonMenuOffset);
+    top: 0;
+    right: 0;
+    bottom: 0;
 
     width: rem($buttonMenuWidth);
-
-    transform: translateY(-50%);
+    padding-right: rem($buttonMenuOffset);
   }
 }

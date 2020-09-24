@@ -99,7 +99,7 @@ export const ButtonMenu = (props) => {
       >
         <span className={cn('Label')}>{label}</span>
         <span className={cn('ButtonInner')}>
-          <Icon icon="kebab-vertical" />
+          <Icon className={cn('ButtonIcon')} icon="kebab-vertical" />
         </span>
       </button>
 

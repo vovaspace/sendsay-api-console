@@ -1,6 +1,8 @@
 .ButtonMenu {
-  width: rem(24);
-  height: rem(24);
+  overflow: hidden;
+
+  min-width: rem(24);
+  min-height: rem(24);
   padding: 0; // Reset button style
 
   fill: $color-border;
@@ -28,6 +30,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+
+  &-ButtonIcon {
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 
 
