@@ -1,6 +1,7 @@
-.Button {
-  $mainBackground: linear-gradient(0deg, $color-button--main, $color-button--light);
+$mainBackground: linear-gradient(0deg, $color-button--main, $color-button--light);
 
+
+.Button {
   min-width: rem(120);
   height: rem(40);
   padding-right: rem(10);
