@@ -1,0 +1,57 @@
+.ButtonMenu {
+  overflow: hidden;
+
+  min-width: rem(24);
+  min-height: rem(24);
+  padding: 0; // Reset button style
+
+  fill: $color-border;
+  border: none; // Reset button style
+  background: none; // Reset button style
+
+
+  @include focus-visible() {
+    fill: $color-focus;
+    outline: none;
+  }
+
+  &--active,
+  &:hover {
+    fill: $color-border--dark;
+  }
+
+
+  &-Label {
+    @include hide();
+  }
+
+
+  &-ButtonInner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  &-ButtonIcon {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+
+  &-Popper {
+    z-index: $zIndex-dropdown;
+
+    border-radius: rem($borderRadius-small);
+    background-color: $color-background--light;
+    box-shadow: $shadow-elevation--20;
+  }
+
+
+  &-MenuList {
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

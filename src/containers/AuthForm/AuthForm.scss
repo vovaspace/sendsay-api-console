@@ -1,0 +1,16 @@
+.AuthForm {
+  max-width: rem(520);
+  padding: rem(40) rem(30);
+
+  border-radius: rem($borderRadius-medium);
+  background-color: $color-background--light;
+  box-shadow: $shadow-elevation--50;
+
+
+  &-Item {
+
+    &:not(:last-child) {
+      margin-bottom: rem(20);
+    }
+  }
+}

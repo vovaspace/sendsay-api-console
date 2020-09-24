@@ -1,0 +1,33 @@
+.AuthScreen {
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+  padding: rem($outerSize * 2) rem($outerSize * 3);
+
+
+  &-Header,
+  &-Footer {
+    display: flex;
+    flex: 1 1 0; // To position the Form in the center
+  }
+
+
+  &-Header {
+    align-items: flex-end;
+  }
+
+
+  &-Footer {
+    align-items: flex-start;
+  }
+
+
+  &-Form {
+    width: 100%;
+    margin-top: rem(20);
+    margin-bottom: rem(20);
+  }
+}

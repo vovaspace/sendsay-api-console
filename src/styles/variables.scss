@@ -1,0 +1,130 @@
+// -- Text --
+
+$fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI",
+             "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+             "Droid Sans", "Helvetica Neue", sans-serif;
+
+
+
+
+// -- Grid --
+
+$outerSize: 15;
+
+
+
+
+// -- z-index --
+
+$zIndex-dropdown: 1000;
+$zIndex-sticky: 1100;
+$zIndex-fixed: 1200;
+$zIndex-backdrop: 1300;
+$zIndex-modal: 1400;
+$zIndex-popover: 1500;
+$zIndex-tooltip: 1600;
+
+
+
+
+// -- Border Radius
+
+$borderRadius-small: 3;
+$borderRadius-medium: 5;
+
+
+
+
+// -- Transitions --
+
+$transition-duration--fastest: 304ms;
+$transition-duration--fast: 656ms;
+$transition-duration--medium: 1008ms;
+$transition-duration--slow: 1360ms;
+$transition-duration--slowest: 1712ms;
+
+$transition-timingFunction--deceleration: cubic-bezier(0, 0, 0.2, 1);
+$transition-timingFunction--standard: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-timingFunction--acceleration: cubic-bezier(0.4, 0, 1, 1);
+$transition-timingFunction--sharp: cubic-bezier(0.4, 0, 0.6, 1);
+$transition-timingFunction--linear: linear;
+
+
+
+
+// -- Base Colors --
+
+$color-light: #ffffff;
+$color-dark: #0d0d0d;
+
+$color-translucentLight--15: rgba(255, 255, 255, 0.15);
+
+$color-translucentDark--10: rgba(0, 0, 0, 0.1);
+$color-translucentDark--15: rgba(0, 0, 0, 0.15);
+$color-translucentDark--20: rgba(0, 0, 0, 0.2);
+$color-translucentDark--25: rgba(0, 0, 0, 0.25);
+$color-translucentDark--40: rgba(0, 0, 0, 0.4);
+
+$color-gray--40: #f7f7f7;
+$color-gray--50: #f6f6f6;
+$color-gray--60: #c4c4c4;
+$color-gray--70: #999999;
+
+$color-red--10: rgba(#cf2c00, 0.1);
+$color-red--30: rgba(#cf2c00, 0.5);
+$color-red--50: #cf2c00;
+
+$color-green--50: #30b800;
+
+$color-blue--10: rgba(#45a5ff, 0.5);
+$color-blue--30: #45a5ff;
+$color-blue--50: #0055fb;
+
+
+// -- UI Colors --
+
+$color-background--root: $color-gray--40;
+$color-background--dark: $color-gray--50;
+$color-background--light: $color-light;
+$color-background--error: $color-red--10;
+
+$color-focus: $color-blue--50;
+
+$color-border: $color-translucentDark--20;
+$color-border--dark: $color-translucentDark--40;
+$color-border--error: $color-red--50;
+
+$color-text: $color-dark;
+$color-text--gray: $color-gray--70;
+$color-text--error: $color-red--50;
+
+$color-button--main: $color-blue--50;
+$color-button--light: $color-blue--30;
+$color-button--text: $color-light;
+$color-button--disabled: $color-gray--60;
+
+$color-status--unknown: $color-gray--60;
+$color-status--success: $color-green--50;
+$color-status--error: $color-red--50;
+
+$color-loader--blue: $color-blue--50;
+$color-loader--light: $color-light;
+
+$color-menu--main: $color-blue--50;
+$color-menu--destructive: $color-red--50;
+$color-menu--lightText: $color-light;
+
+
+
+
+// -- Shadows --
+
+$shadow-outline--blue: 0 0 0 rem(2) $color-blue--10;
+$shadow-outline--dark: 0 0 0 rem(2) $color-translucentDark--20;
+$shadow-outline--destructive: 0 0 0 rem(2) $color-red--30;
+
+$shadow-error: 0 0 rem(5) 0 $color-red--30;
+
+$shadow-elevation--10: 0 rem(1) rem(2) 0 $color-translucentDark--10;
+$shadow-elevation--20: 0 rem(1) rem(4) 0 $color-translucentDark--25;
+$shadow-elevation--50: 0 rem(4) rem(10) 0 $color-translucentDark--10;

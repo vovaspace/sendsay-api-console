@@ -1,0 +1,43 @@
+.RequestsHistoryList {
+  align-items: stretch;
+
+
+  &-ScrollArea {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: rem(1);
+  }
+
+
+  &-List {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    padding: 0; // Reset ul style
+    margin: 0; // Reset ul style
+
+    list-style: none; // Reset ul style
+  }
+
+
+  &-ListItem {
+
+    &:not(:last-child) {
+      margin-right: rem(10);
+    }
+  }
+
+
+  &-CleanButtonContainer {
+    display: flex;
+    align-items: center;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-right: rem($outerSize);
+    padding-left: rem($outerSize);
+
+    border-left: rem(1) solid $color-border;
+  }
+}

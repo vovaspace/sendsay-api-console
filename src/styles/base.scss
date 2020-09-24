@@ -1,0 +1,47 @@
+html {
+  box-sizing: border-box;
+
+  height: 100%;
+
+  color: $color-text;
+  fill: $color-text;
+
+  font-family: $fontFamily;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+body {
+  overflow: hidden;
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+
+.js-focus-visible :focus:not([data-focus-visible-added]) {
+  outline: none;
+}
+
+
+#root {
+  height: 100%;
+}

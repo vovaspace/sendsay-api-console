@@ -1,0 +1,88 @@
+.IconButton {
+  @mixin makeColor($color) {
+    color: $color;
+    fill: $color;
+  }
+
+
+  @include makeColor($color-text);
+
+  position: relative;
+
+  height: unset;
+  padding: 0; // Reset button style
+
+  border: none; // Reset button style
+  background: none; // Reset button style
+
+
+  &::after {
+    position: absolute;
+    top: rem(-3);
+    right: rem(-3);
+    bottom: rem(-3);
+    left: rem(-3);
+
+    display: block;
+
+    content: '';
+    pointer-events: none;
+
+    opacity: 0;
+    border-radius: rem($borderRadius-medium);
+    box-shadow: $shadow-outline--blue;
+  }
+
+
+  @include focus-visible() {
+    @include makeColor($color-button--main);
+    outline: none;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    @include makeColor($color-button--main);
+  }
+
+  &:active:not(:disabled) {
+    @include makeColor($color-button--light);
+  }
+
+
+  &--disabled {
+    @include makeColor($color-button--disabled);
+  }
+
+
+  &-Inner {
+    display: flex;
+    align-items: center;
+
+    &--invertedDirection {
+      flex-direction: row-reverse;
+    }
+  }
+
+
+  &-Label {
+
+    &--hidden {
+      @include hide();
+    }
+
+
+    &--margin {
+
+      &_left {
+        margin-left: rem(8);
+      }
+
+      &_right {
+        margin-right: rem(8);
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.AppFooter {
+  display: flex;
+
+
+  &-Item {
+    flex: 1 1 100%; // To position copyright in center
+
+
+    &--aligned {
+
+      &_left {
+        text-align: left;
+      }
+
+      &_center {
+        margin-right: rem(30);
+        margin-left: rem(30);
+        text-align: center;
+      }
+
+      &_right {
+        text-align: right;
+      }
+    }
+  }
+}

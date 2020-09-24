@@ -1,0 +1,31 @@
+.Loader {
+  animation: rotationAnimation $transition-duration--medium $transition-timingFunction--standard infinite;
+
+
+  &--color {
+
+    &_blue {
+      fill: $color-loader--blue;
+    }
+
+    &_light {
+      fill: $color-loader--light;
+    }
+  }
+}
+
+
+@keyframes rotationAnimation {
+
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

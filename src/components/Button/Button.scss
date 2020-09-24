@@ -1,0 +1,42 @@
+$mainBackground: linear-gradient(0deg, $color-button--main, $color-button--light);
+
+
+.Button {
+  min-width: rem(120);
+  height: rem(40);
+  padding-right: rem(10);
+  padding-left: rem(10);
+
+  color: $color-button--text;
+  border: none; // Reset button style
+  border-radius: rem($borderRadius-medium);
+  background: $mainBackground;
+
+  font-weight: 500;
+
+
+  @include focus-visible() {
+    outline: none;
+    box-shadow: $shadow-outline--blue;
+  }
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(0deg, $color-translucentLight--15, $color-translucentLight--15), $mainBackground;
+  }
+
+  &:active:not(:disabled) {
+    background: linear-gradient(0deg, $color-translucentDark--15, $color-translucentDark--15), $mainBackground;
+  }
+
+
+  &--disabled {
+    background: $color-button--disabled;
+  }
+
+
+  &-Inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

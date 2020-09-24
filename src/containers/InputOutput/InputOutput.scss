@@ -1,0 +1,71 @@
+$minFieldWidth: 240;
+$fieldsDistance: 10;
+$minNoScrollWidth: (2 * $minFieldWidth ) + (2 * $outerSize) + $fieldsDistance;
+
+
+:export {
+  var-min-field-width: $minFieldWidth;
+}
+
+
+.InputOutput {
+  overflow: auto;
+  height: rem(1); // Safari Inner height fix
+
+
+  &-Inner {
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+    min-width: rem($minNoScrollWidth);
+    min-height: 100%;
+    padding: rem(10) rem($outerSize) rem(15);
+  }
+
+
+  &-Field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: rem($minFieldWidth);
+    min-height: rem(520);
+
+
+    &--type {
+
+      &_input {
+        order: 1;
+        margin-right: rem($fieldsDistance / 2);
+
+        @include breakpoint-up($minNoScrollWidth) {
+          margin-right: 0;
+        }
+      }
+
+      &_output {
+        order: 3;
+        margin-left: rem($fieldsDistance / 2);
+
+        @include breakpoint-up($minNoScrollWidth) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+
+  &-Input {
+    flex-grow: 1;
+  }
+
+
+  &-DragLever {
+    order: 2;
+    display: none;
+    flex: 0 0 rem($fieldsDistance);
+
+    @include breakpoint-up($minNoScrollWidth) {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  height: 100%;
+
+  background-color: $color-background--root;
+
+
+  &-CenteredContent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    margin: auto;
+  }
+
+
+  &-ErrorCard {
+    margin-bottom: rem(20);
+  }
+}

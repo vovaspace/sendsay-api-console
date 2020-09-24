@@ -1,0 +1,53 @@
+.ScrollArea {
+  position: relative;
+
+
+  // Side gradients
+  &::before,
+  &::after {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+
+    display: block;
+
+    width: rem($outerSize);
+
+    content: '';
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(90deg, $color-background--dark 0.06%, rgba($color-background--dark, 0) 99.94%);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(270deg, $color-background--dark 0.06%, rgba($color-background--dark, 0) 99.94%);
+  }
+
+
+  &-ScrollContainer {
+    display: flex;
+    overflow-x: auto;
+
+    height: 100%;
+
+    -ms-overflow-style: none;  // Hide scrollbar: IE and Edge
+    scrollbar-width: none;  // Hide scrollbar: Firefox
+
+    // Hide scrollbar: Webkit
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+
+  &-Inner {
+    height: 100%;
+    padding-right: rem($outerSize);
+    padding-left: rem($outerSize);
+  }
+}

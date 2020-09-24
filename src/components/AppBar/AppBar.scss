@@ -1,0 +1,56 @@
+.AppBar {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding-right: rem($outerSize);
+  padding-left: rem($outerSize);
+
+
+  // Border
+  &::after {
+    position: absolute;
+    z-index: 50;
+    right: 0;
+    left: 0;
+
+    display: block;
+
+    height: rem(1);
+
+    content: '';
+
+    border-radius: rem(1);
+    background-color: $color-border;
+  }
+
+
+  &--noPadding {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+
+  &--type {
+
+    &_top {
+      height: rem(50);
+      background-color: $color-background--dark;
+
+      &::after {
+        bottom: 0;
+      }
+    }
+
+
+    &_bottom {
+      height: rem(70);
+      background-color: $color-background--light;
+
+      &::after {
+        top: 0;
+      }
+    }
+  }
+}

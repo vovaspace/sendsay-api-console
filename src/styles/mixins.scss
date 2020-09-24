@@ -1,0 +1,30 @@
+// Hide
+@mixin hide() {
+  position: absolute;
+
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+
+  display: block;
+
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+
+  border: none;
+}
+
+
+@mixin breakpoint-up($width) {
+  @media screen and (min-width: rem($width)) {
+    @content;
+  }
+}
+
+
+@mixin focus-visible() {
+  &:focus[data-focus-visible-added] {
+    @content;
+  }
+}

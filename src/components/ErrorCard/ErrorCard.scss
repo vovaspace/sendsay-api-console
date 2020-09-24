@@ -1,0 +1,49 @@
+.ErrorCard {
+  display: flex;
+
+  padding: rem(10) rem(13) rem(10) rem(10);
+
+  border-radius: rem($borderRadius-medium);
+  background-color: $color-background--error;
+
+
+  &-Icon {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-top: rem(3);
+    margin-right: rem(8);
+
+    opacity: 0.8;
+    fill: $color-text--error;
+  }
+
+
+  &-TextContainer {
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    color: $color-text--error;
+  }
+
+
+  &-Message {
+    margin: 0; // Reset h2 style
+
+    font-size: rem(18);
+    font-weight: 400;
+    line-height: rem(30);
+  }
+
+
+  &-Description {
+    margin: 0; // Reset p style
+
+    opacity: 0.5;
+
+    font-size: rem(12);
+    line-height: rem(20);
+  }
+}

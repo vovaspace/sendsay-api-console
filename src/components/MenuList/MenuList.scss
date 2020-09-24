@@ -1,0 +1,57 @@
+.MenuList {
+  display: flex;
+  flex-direction: column;
+
+  padding: rem(5) 0;
+  margin-top: 0; // Reset ul style
+  margin-bottom: 0; // Reset ul style
+
+  list-style: none; // Reset ul style
+
+  color: $color-text;
+
+
+  &-Button {
+    width: 100%;
+    padding: rem(10) rem(15);
+
+    border: none; // Reset button style
+    background: none; // Reset button style
+
+    text-align: left; // Reset button style
+
+
+    @include focus-visible() {
+      color: $color-menu--main;
+      outline: none;
+      box-shadow: $shadow-outline--blue;
+    }
+
+    &:hover {
+      color: $color-menu--lightText;
+      background-color: $color-menu--main;
+    }
+
+
+    &--destructive {
+      @include focus-visible() {
+        color: $color-menu--destructive;
+        box-shadow: $shadow-outline--destructive;
+      }
+
+      &:hover {
+        color: $color-menu--lightText;
+        background-color: $color-menu--destructive;
+      }
+    }
+  }
+
+
+  &-Divider {
+    height: rem(1);
+    margin-top: rem(5);
+    margin-bottom: rem(5);
+
+    background-color: $color-border;
+  }
+}

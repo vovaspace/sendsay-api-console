@@ -1,0 +1,118 @@
+$buttonMenuWidth: 20;
+$buttonMenuOffset: 4;
+
+
+.RequestChip {
+  position: relative;
+
+  display: flex;
+  // overflow: hidden;
+
+  height: rem(30);
+
+  border-radius: rem($borderRadius-medium);
+  box-shadow: $shadow-elevation--10;
+
+
+  &:hover {
+    box-shadow: $shadow-elevation--20;
+  }
+
+
+  &-Button {
+    height: 100%;
+    padding: 0 rem($buttonMenuWidth + (2 * $buttonMenuOffset)) 0 rem(10);
+
+    border: none; // Reset button style
+    border-radius: rem($borderRadius-medium);
+    background-color: $color-background--light;
+
+
+    @include focus-visible() {
+      outline: none;
+      box-shadow: $shadow-outline--blue;
+    }
+  }
+
+
+  &-ButtonInner {
+    display: flex;
+    align-items: center;
+  }
+
+
+  &-StatusIndicator {
+    position: relative;
+
+    display: block;
+
+    width: rem(10);
+    height: rem(10);
+    margin-right: rem(5);
+
+    border-radius: 50%;
+    background-color: $color-status--unknown;
+
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      display: block;
+
+      content: '';
+
+      border: rem(1) solid $color-border;
+      border-radius: 50%;
+    }
+
+
+    &--type {
+
+      &_success {
+        background-color: $color-status--success;
+      }
+
+      &_error {
+        background-color: $color-status--error;
+      }
+    }
+  }
+
+
+  &-ButtonMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: rem($buttonMenuWidth);
+    padding-right: rem($buttonMenuOffset);
+  }
+
+
+  &-NotificationContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: none;
+    user-select: none;
+  }
+
+
+  &-Notification {
+    position: absolute;
+    max-width: 100%;
+  }
+}

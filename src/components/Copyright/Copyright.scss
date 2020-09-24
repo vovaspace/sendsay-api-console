@@ -1,0 +1,47 @@
+.Copyright {
+  color: $color-text--gray;
+  text-decoration: none;
+
+
+  &:hover {
+    @extend %hoverAndFocus;
+  }
+
+  @include focus-visible() {
+    @extend %hoverAndFocus;
+  }
+}
+
+
+@keyframes rainbowAnimation {
+
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+
+%hoverAndFocus {
+  animation: rainbowAnimation $transition-duration--slow $transition-timingFunction--sharp infinite;
+
+  color: transparent;
+  outline: none;
+  background:
+    linear-gradient(
+      90deg,
+      #9400d3,
+      #0000ff,
+      #0077ff,
+      #00ff00,
+      #ffff00,
+      #ff7f00,
+      #ff0000,
+      #9400d3,
+    );
+  background-clip: text;
+  background-size: 1000% 100%;
+}
