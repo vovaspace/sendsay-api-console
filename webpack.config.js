@@ -139,6 +139,24 @@ module.exports = (env) => {
             },
           ],
         },
+
+
+        /* IMAGES */
+        {
+          test: /\.(jpg|jpeg|gif|svg|png|webp)$/,
+          exclude: [
+            path.resolve(__dirname, `${PATH.src}/${PATH.resources}/icons`),
+          ],
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: isDev ? '[name].[ext]' : '[name].[contenthash:8].[ext]',
+                outputPath: `./${PATH.static}/assets/images`,
+              },
+            },
+          ],
+        },
       ],
     },
 

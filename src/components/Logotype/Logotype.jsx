@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { makeCn } from '@/utils';
 
+import logotypeSrc from './img/logotype.svg';
 import styles from './Logotype.scss';
 
 
@@ -15,7 +16,11 @@ export const Logotype = (props) => {
   } = props;
 
   return (
-    <div className={cn(null, [className])} />
+    <img
+      className={cn(null, [className])}
+      src={logotypeSrc}
+      alt="Логотип API-консольки"
+    />
   );
 };
 
