@@ -42,22 +42,28 @@ export const AppFooter = (props) => {
       tag="footer"
       type="bottom"
     >
-      <Button
-        loading={isCallLoading}
-        disableOnLoading={false}
-        onClick={handleSend}
-      >
-        Отправить
-      </Button>
+      <span className={cn('Item', { aligned: 'left' })}>
+        <Button
+          loading={isCallLoading}
+          disableOnLoading={false}
+          onClick={handleSend}
+        >
+          Отправить
+        </Button>
+      </span>
 
-      <Copyright />
+      <span className={cn('Item', { aligned: 'center' })}>
+        <Copyright />
+      </span>
 
-      <IconButton
-        icon="align-right"
-        onClick={handleFormat}
-      >
-        Форматировать
-      </IconButton>
+      <span className={cn('Item', { aligned: 'right' })}>
+        <IconButton
+          icon="align-right"
+          onClick={handleFormat}
+        >
+          Форматировать
+        </IconButton>
+      </span>
     </AppBar>
   );
 };
