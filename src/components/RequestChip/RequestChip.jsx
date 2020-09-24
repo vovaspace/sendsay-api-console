@@ -101,8 +101,7 @@ export const RequestChipPropTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string,
   id: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  request: PropTypes.object.isRequired,
+  request: PropTypes.string.isRequired,
   status: PropTypes.oneOf([CALL_STATUS.error, CALL_STATUS.success]).isRequired,
   notification: PropTypes.shape({
     id: PropTypes.string.isRequired,

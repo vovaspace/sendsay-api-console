@@ -1,5 +1,4 @@
 import { createReducer } from '@reduxjs/toolkit';
-import equal from 'fast-deep-equal';
 
 import { REQUESTS_HISTORY } from '@/constants';
 import { RequestsHistoryActions } from '@/actions';
@@ -18,12 +17,26 @@ export const requestsHistory = createReducer(initialState, (builder) => builder
   }))
 
 
-  .addCase(RequestsHistoryActions.addItem, (state, { payload: { id, request, status } }) => ({
+  .addCase(RequestsHistoryActions.addItem, (state, {
+    payload: {
+      id,
+      action,
+      request,
+      status,
+    },
+  }) => ({
     ...state,
     items: [
-      { id, request, status }, // New item
+      // New item
+      {
+        id,
+        action,
+        request,
+        status,
+      },
+      // Remove items with similar request
       ...state.items.filter(
-        (item) => !equal(item.request, request), // Remove items with similar request
+        (item) => item.request !== request,
       ),
     ].slice(0, REQUESTS_HISTORY.volume), // No more than the volume
   }))

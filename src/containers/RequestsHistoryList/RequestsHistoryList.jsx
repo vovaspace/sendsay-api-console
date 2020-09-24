@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector, batch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { makeCn, stringifyCall } from '@/utils';
+import { makeCn } from '@/utils';
 import { RequestsHistoryActions, ApiCallerActions, ClipboardActions } from '@/actions';
 import { RequestsHistorySelectors } from '@/selectors';
 
@@ -30,20 +30,20 @@ export const RequestsHistoryList = (props) => {
 
   const handlePaste = useCallback((id, request) => {
     dispatch(ApiCallerActions.setRequestValue({
-      value: stringifyCall(request),
+      value: request,
     }));
   }, [dispatch]);
 
   const handleCall = useCallback((id, request) => {
     batch(() => {
-      handlePaste(request);
+      handlePaste(id, request);
       dispatch(ApiCallerActions.makeCallRequest());
     });
   }, [handlePaste, dispatch]);
 
   const handleCopy = useCallback((id, request) => {
     dispatch(ClipboardActions.copy({
-      text: stringifyCall(request),
+      text: request,
       actionSuccess: RequestsHistoryActions.addNotification({ itemId: id, message: 'Скопировано' }),
       actionFailure: RequestsHistoryActions.addNotification({ itemId: id, message: 'Ошибочка :(' }),
     }));
@@ -68,7 +68,14 @@ export const RequestsHistoryList = (props) => {
     >
       <ScrollArea className={cn('ScrollArea')}>
         <ul className={cn('List')}>
-          {items.map(({ id, request, status }) => {
+          {items.map((item) => {
+            const {
+              id,
+              action,
+              request,
+              status,
+            } = item;
+
             const notification = notifications.find((n) => n.itemId === id);
 
             return (
@@ -84,7 +91,7 @@ export const RequestsHistoryList = (props) => {
                   onCopy={handleCopy}
                   onRemove={handleRemove}
                 >
-                  {request.action || 'unknown'}
+                  {action}
                 </RequestChip>
               </li>
             );
