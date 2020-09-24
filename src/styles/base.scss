@@ -37,6 +37,11 @@ button:disabled {
 }
 
 
+.js-focus-visible :focus:not([data-focus-visible-added]) {
+  outline: none;
+}
+
+
 #root {
   height: 100%;
 }

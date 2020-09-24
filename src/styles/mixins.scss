@@ -21,3 +21,10 @@
     @content;
   }
 }
+
+
+@mixin focus-visible() {
+  &:focus[data-focus-visible-added] {
+    @content;
+  }
+}

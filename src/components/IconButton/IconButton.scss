@@ -34,7 +34,7 @@
   }
 
 
-  &:focus {
+  @include focus-visible() {
     @include makeColor($color-button--main);
     outline: none;
 

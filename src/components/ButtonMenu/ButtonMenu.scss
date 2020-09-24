@@ -8,7 +8,7 @@
   background: none; // Reset button style
 
 
-  &:focus {
+  @include focus-visible() {
     fill: $color-focus;
     outline: none;
   }

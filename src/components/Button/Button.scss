@@ -14,7 +14,7 @@
   font-weight: 500;
 
 
-  &:focus {
+  @include focus-visible() {
     outline: none;
     box-shadow: $shadow-outline--blue;
   }

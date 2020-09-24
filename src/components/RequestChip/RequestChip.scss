@@ -27,7 +27,7 @@
     background-color: $color-background--light;
 
 
-    &:focus {
+    @include focus-visible() {
       outline: none;
     }
   }

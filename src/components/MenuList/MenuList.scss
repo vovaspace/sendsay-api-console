@@ -21,7 +21,7 @@
     text-align: left; // Reset button style
 
 
-    &:focus {
+    @include focus-visible() {
       color: $color-menu--main;
       outline: none;
       box-shadow: $shadow-outline--blue;
@@ -34,8 +34,7 @@
 
 
     &--destructive {
-
-      &:focus {
+      @include focus-visible() {
         color: $color-menu--destructive;
         box-shadow: $shadow-outline--destructive;
       }

@@ -3,26 +3,12 @@
   text-decoration: none;
 
 
-  &:hover,
-  &:focus {
-    animation: rainbowAnimation $transition-duration--slow $transition-timingFunction--sharp infinite;
+  &:hover {
+    @extend %hoverAndFocus;
+  }
 
-    color: transparent;
-    outline: none;
-    background:
-      linear-gradient(
-        90deg,
-        #9400d3,
-        #0000ff,
-        #0077ff,
-        #00ff00,
-        #ffff00,
-        #ff7f00,
-        #ff0000,
-        #9400d3,
-      );
-    background-clip: text;
-    background-size: 1000% 100%;
+  @include focus-visible() {
+    @extend %hoverAndFocus;
   }
 }
 
@@ -36,4 +22,26 @@
   100% {
     background-position: 100% 0;
   }
+}
+
+
+%hoverAndFocus {
+  animation: rainbowAnimation $transition-duration--slow $transition-timingFunction--sharp infinite;
+
+  color: transparent;
+  outline: none;
+  background:
+    linear-gradient(
+      90deg,
+      #9400d3,
+      #0000ff,
+      #0077ff,
+      #00ff00,
+      #ffff00,
+      #ff7f00,
+      #ff0000,
+      #9400d3,
+    );
+  background-clip: text;
+  background-size: 1000% 100%;
 }

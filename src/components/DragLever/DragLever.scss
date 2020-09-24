@@ -14,7 +14,7 @@
     fill: $color-border--dark;
   }
 
-  &:focus {
+  @include focus-visible() {
     fill: $color-focus;
     outline: none;
   }

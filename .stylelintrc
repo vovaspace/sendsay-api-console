@@ -143,7 +143,7 @@
     "no-missing-end-of-source-newline": true,
     "no-empty-first-line": true,
 
-    "aditayvm/at-rule-no-children": true,
+    "aditayvm/at-rule-no-children": [{ ignore: ["focus-visible"] }],
 
     "order/properties-order": [
       [
