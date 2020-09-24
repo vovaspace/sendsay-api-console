@@ -92,4 +92,27 @@ $buttonMenuOffset: 4;
     width: rem($buttonMenuWidth);
     padding-right: rem($buttonMenuOffset);
   }
+
+
+  &-NotificationContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: none;
+    user-select: none;
+  }
+
+
+  &-Notification {
+    position: absolute;
+    max-width: 100%;
+  }
 }

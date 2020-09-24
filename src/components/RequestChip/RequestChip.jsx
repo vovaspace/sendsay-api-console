@@ -1,11 +1,14 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { TransitionGroup } from 'react-transition-group';
 
 import { CALL_STATUS } from '@/constants';
 import { makeCn } from '@/utils';
 
 import { ButtonMenu } from '@/components/ButtonMenu';
 import { MenuListItem, MenuListDivider } from '@/components/MenuList';
+import { Transition } from '@/components/Transition';
+import { Notification } from '@/components/Notification';
 
 import styles from './RequestChip.scss';
 
@@ -20,6 +23,7 @@ export const RequestChip = (props) => {
     id,
     request,
     status,
+    notification,
 
     onPaste,
     onCall,
@@ -32,16 +36,16 @@ export const RequestChip = (props) => {
 
 
   const handlePaste = useCallback(() => {
-    onPaste(request);
-  }, [request, onPaste]);
+    onPaste(id, request);
+  }, [id, request, onPaste]);
 
   const handleCall = useCallback(() => {
-    onCall(request);
-  }, [request, onCall]);
+    onCall(id, request);
+  }, [id, request, onCall]);
 
   const handleCopy = useCallback(() => {
-    onCopy(request);
-  }, [request, onCopy]);
+    onCopy(id, request);
+  }, [id, request, onCopy]);
 
   const handleRemove = useCallback(() => {
     onRemove(id);
@@ -64,6 +68,7 @@ export const RequestChip = (props) => {
         </span>
       </button>
 
+
       <ButtonMenu
         className={cn('ButtonMenu')}
         htmlId={`request-history-item-menu-${id}`}
@@ -74,6 +79,19 @@ export const RequestChip = (props) => {
         <MenuListDivider />
         <MenuListItem destructive onClick={handleRemove}>Удалить</MenuListItem>
       </ButtonMenu>
+
+
+      <TransitionGroup className={cn('NotificationContainer')}>
+        {notification && (
+          <Transition
+            key={notification.id}
+            animation="slip"
+            timeout={1000}
+          >
+            {() => <Notification className={cn('Notification')}>{notification.message}</Notification>}
+          </Transition>
+        )}
+      </TransitionGroup>
     </div>
   );
 };
@@ -86,6 +104,10 @@ export const RequestChipPropTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   request: PropTypes.object.isRequired,
   status: PropTypes.oneOf([CALL_STATUS.error, CALL_STATUS.success]).isRequired,
+  notification: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+  }),
 
   onPaste: PropTypes.func.isRequired,
   onCall: PropTypes.func.isRequired,
@@ -96,6 +118,7 @@ export const RequestChipPropTypes = {
 
 export const RequestChipDefaultProps = {
   className: null,
+  notification: null,
 };
 
 

@@ -7,6 +7,7 @@ import { RequestsHistoryActions } from '@/actions';
 
 const initialState = {
   items: [],
+  notifications: [],
 };
 
 
@@ -36,4 +37,18 @@ export const requestsHistory = createReducer(initialState, (builder) => builder
   .addCase(RequestsHistoryActions.clear, (state) => ({
     ...state,
     items: initialState.items,
+  }))
+
+
+  .addCase(
+    RequestsHistoryActions.addNotification,
+    (state, { payload: { id, itemId, message } }) => ({
+      ...state,
+      notifications: [{ id, itemId, message }, ...state.notifications],
+    }),
+  )
+
+  .addCase(RequestsHistoryActions.removeNotification, (state, { payload: { id } }) => ({
+    ...state,
+    notifications: state.notifications.filter((message) => message.id !== id),
   })));

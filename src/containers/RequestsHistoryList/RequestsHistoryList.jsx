@@ -3,7 +3,7 @@ import { useDispatch, useSelector, batch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { makeCn, stringifyCall } from '@/utils';
-import { RequestsHistoryActions, ApiCallerActions } from '@/actions';
+import { RequestsHistoryActions, ApiCallerActions, ClipboardActions } from '@/actions';
 import { RequestsHistorySelectors } from '@/selectors';
 
 import { AppBar } from '@/components/AppBar';
@@ -25,28 +25,34 @@ export const RequestsHistoryList = (props) => {
   const dispatch = useDispatch();
 
   const items = useSelector(RequestsHistorySelectors.selectItems);
+  const notifications = useSelector(RequestsHistorySelectors.selectNotifications);
 
 
-  const handlePaste = useCallback((request) => {
+  const handlePaste = useCallback((id, request) => {
     dispatch(ApiCallerActions.setRequestValue({
       value: stringifyCall(request),
     }));
   }, [dispatch]);
 
-  const handleCall = useCallback((request) => {
+  const handleCall = useCallback((id, request) => {
     batch(() => {
       handlePaste(request);
       dispatch(ApiCallerActions.makeCallRequest());
     });
   }, [handlePaste, dispatch]);
 
-  const handleCopy = useCallback((request) => {
-    console.log('copy', request);
-  }, []);
+  const handleCopy = useCallback((id, request) => {
+    dispatch(ClipboardActions.copy({
+      text: stringifyCall(request),
+      actionSuccess: RequestsHistoryActions.addNotification({ itemId: id, message: 'Скопировано' }),
+      actionFailure: RequestsHistoryActions.addNotification({ itemId: id, message: 'Ошибочка :(' }),
+    }));
+  }, [dispatch]);
 
   const handleRemove = useCallback((id) => {
     dispatch(RequestsHistoryActions.removeItem({ id }));
   }, [dispatch]);
+
 
   const handleClear = useCallback(() => {
     dispatch(RequestsHistoryActions.clear());
@@ -62,22 +68,27 @@ export const RequestsHistoryList = (props) => {
     >
       <ScrollArea className={cn('ScrollArea')}>
         <ul className={cn('List')}>
-          {items.map(({ id, request, status }) => (
-            <li key={id} className={cn('ListItem')}>
-              <RequestChip
-                id={id}
-                request={request}
-                status={status}
+          {items.map(({ id, request, status }) => {
+            const notification = notifications.find((n) => n.itemId === id);
 
-                onPaste={handlePaste}
-                onCall={handleCall}
-                onCopy={handleCopy}
-                onRemove={handleRemove}
-              >
-                {request.action || 'unknown'}
-              </RequestChip>
-            </li>
-          ))}
+            return (
+              <li key={id} className={cn('ListItem')}>
+                <RequestChip
+                  id={id}
+                  request={request}
+                  status={status}
+                  notification={notification}
+
+                  onPaste={handlePaste}
+                  onCall={handleCall}
+                  onCopy={handleCopy}
+                  onRemove={handleRemove}
+                >
+                  {request.action || 'unknown'}
+                </RequestChip>
+              </li>
+            );
+          })}
         </ul>
       </ScrollArea>
 
