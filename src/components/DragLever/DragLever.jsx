@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { KEYBOARD_KEY } from '@/constants';
@@ -22,6 +22,9 @@ export const DragLever = (props) => {
   } = props;
 
 
+  const [isDragging, setIsDragging] = useState(false);
+
+
   const handleMouseMove = useCallback((event) => {
     const { movementX, movementY } = event;
     onDrag(movementX, movementY);
@@ -29,9 +32,11 @@ export const DragLever = (props) => {
 
 
   const handleMouseDown = useCallback(() => {
+    setIsDragging(true);
     window.addEventListener('mousemove', handleMouseMove);
 
     const stopHandling = () => {
+      setIsDragging(false);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', stopHandling);
     };
@@ -70,7 +75,7 @@ export const DragLever = (props) => {
 
   return (
     <button
-      className={cn(null, [className])}
+      className={cn({ active: isDragging }, [className])}
       type="button"
 
       onMouseDown={handleMouseDown}

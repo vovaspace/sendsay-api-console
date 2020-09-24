@@ -10,7 +10,8 @@
   background: none;
 
 
-  &:hover {
+  &:hover,
+  &--active {
     fill: $color-border--dark;
   }
 
