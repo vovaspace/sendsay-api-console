@@ -48,6 +48,6 @@ function* callApi() {
 }
 
 
-export function* callApiWatcher() {
+export function* apiCallWatcher() {
   yield takeLatest(ApiCallerActions.makeCallRequest, callApi);
 }

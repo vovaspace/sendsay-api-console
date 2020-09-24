@@ -4,7 +4,7 @@ import { authFlow } from './authFlow.saga';
 import { initFlow } from './initFlow.saga';
 import { localStorageFlow } from './localStorageFlow.saga';
 
-import { callApiWatcher } from './callApiWatcher.saga';
+import { apiCallWatcher } from './apiCallWatcher.saga';
 import { requestsHistoryItemsAddingWatcher } from './requestsHistoryItemsAddingWatcher.saga';
 
 
@@ -13,6 +13,6 @@ export function* rootSaga() {
   yield spawn(initFlow);
   yield spawn(localStorageFlow);
 
-  yield spawn(callApiWatcher);
+  yield spawn(apiCallWatcher);
   yield spawn(requestsHistoryItemsAddingWatcher);
 }
