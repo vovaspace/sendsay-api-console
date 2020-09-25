@@ -3,6 +3,7 @@
   margin-bottom: 0; // Reset H1 style
 
   white-space: nowrap;
+  letter-spacing: rem(1);
 
   font-size: rem(24);
   font-weight: 400; // Reset H1 style
@@ -10,6 +11,7 @@
 
 
   &--shrinked {
+    letter-spacing: rem(0.7);
     font-size: rem(20);
   }
 }
