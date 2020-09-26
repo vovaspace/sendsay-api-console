@@ -1,0 +1,19 @@
+language: 'node_js'
+
+node_js:
+  - '13.11.0'
+
+sudo: false
+
+script:
+  - 'yarn lint'
+  - 'yarn build'
+
+deploy:
+  provider: 'pages'
+  skip_cleanup: true
+  local_dir: 'build/'
+  github_token: '$GITHUB_TOKEN'
+  keep_history: true
+  on:
+    branch: 'master'
