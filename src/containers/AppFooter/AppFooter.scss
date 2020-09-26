@@ -3,23 +3,24 @@
 
 
   &-Item {
+    display: flex;
     flex: 1 1 100%; // To position copyright in center
 
 
     &--aligned {
 
       &_left {
-        text-align: left;
+        justify-content: flex-start;
       }
 
       &_center {
+        justify-content: center;
         margin-right: rem(30);
         margin-left: rem(30);
-        text-align: center;
       }
 
       &_right {
-        text-align: right;
+        justify-content: flex-end;
       }
     }
   }

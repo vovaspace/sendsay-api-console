@@ -1,3 +1,3 @@
 export const REQUESTS_HISTORY = {
-  volume: 15,
+  volume: 20,
 };
