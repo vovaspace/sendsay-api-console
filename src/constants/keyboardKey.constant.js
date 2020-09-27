@@ -4,4 +4,5 @@ export const KEYBOARD_KEY = {
   arrowDown: 'ArrowDown',
   arrowLeft: 'ArrowLeft',
   escape: 'Escape',
+  enter: 'Enter',
 };
