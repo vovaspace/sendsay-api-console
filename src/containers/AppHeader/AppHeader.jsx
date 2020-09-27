@@ -43,11 +43,16 @@ export const AppHeader = (props) => {
       tag="header"
       type="top"
     >
-      <Logotype className={cn('Item', { logotype: true })} />
-      <TextLogotype className={cn('Item')} shrinked />
+      <span className={cn('Item', { shiftingRight: true })}>
+        <Logotype className={cn('Item')} />
+        <TextLogotype
+          className={cn('Item', { textLogotype: true, hiddenOnLaptopDown: true })}
+          shrinked
+        />
+      </span>
 
       <UserChip
-        className={cn('Item', { shiftedRight: true })}
+        className={cn('Item', { hiddenOnLaptopDown: true })}
         account={user.account}
         sublogin={user.sublogin}
       />

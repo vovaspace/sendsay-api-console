@@ -9,6 +9,8 @@
   font-size: rem(18);
   line-height: rem(30);
 
+  -webkit-appearance: none; // iOS shadow fix
+
 
   // Chrome autofill bug-fix
   &:-webkit-autofill::first-line {

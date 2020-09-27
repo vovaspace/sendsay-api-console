@@ -23,5 +23,12 @@
         justify-content: flex-end;
       }
     }
+
+
+    &--hiddenOnTabletDown {
+      @include breakpoint-down(rem($breakpoint-tablet)) {
+        display: none;
+      }
+    }
   }
 }
