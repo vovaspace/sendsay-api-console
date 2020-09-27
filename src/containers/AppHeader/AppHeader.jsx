@@ -22,7 +22,7 @@ export const AppHeader = (props) => {
   const {
     className,
     fullscreen,
-    disabledFullscreenButton,
+    hideFullscreenButton,
     onFullscreenToggle,
   } = props;
 
@@ -63,16 +63,17 @@ export const AppHeader = (props) => {
         Выйти
       </IconButton>
 
-      <IconButton
-        className={cn('Item')}
-        icon={fullscreen ? 'minimize' : 'maximize'}
-        disabled={disabledFullscreenButton}
-        hiddenLabel
+      {!hideFullscreenButton && (
+        <IconButton
+          className={cn('Item')}
+          icon={fullscreen ? 'minimize' : 'maximize'}
+          hiddenLabel
 
-        onClick={onFullscreenToggle}
-      >
-        {fullscreen ? 'Выйти из полноэкранного режима' : 'Перейти в полноэкранный режим'}
-      </IconButton>
+          onClick={onFullscreenToggle}
+        >
+          {fullscreen ? 'Выйти из полноэкранного режима' : 'Перейти в полноэкранный режим'}
+        </IconButton>
+      )}
     </AppBar>
   );
 };
@@ -81,7 +82,7 @@ export const AppHeader = (props) => {
 export const AppHeaderPropTypes = {
   className: PropTypes.string,
   fullscreen: PropTypes.bool.isRequired,
-  disabledFullscreenButton: PropTypes.bool.isRequired,
+  hideFullscreenButton: PropTypes.bool.isRequired,
   onFullscreenToggle: PropTypes.func.isRequired,
 };
 
