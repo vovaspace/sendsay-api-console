@@ -77,6 +77,8 @@ export const AuthForm = (props) => {
         value={formValue.login}
         name="login"
         label="Логин"
+        type="email"
+        inputmode="email"
         error={hasSubmitted && formErrors?.login}
 
         onChange={handleChange}
@@ -85,9 +87,10 @@ export const AuthForm = (props) => {
       <TextField
         className={cn('Item')}
         value={formValue.sublogin}
-        type="email"
         name="sublogin"
         label="Сублогин"
+        type="email"
+        inputmode="email"
         required={false}
 
         onChange={handleChange}
@@ -96,9 +99,9 @@ export const AuthForm = (props) => {
       <TextField
         className={cn('Item')}
         value={formValue.password}
-        type="password"
         name="password"
         label="Пароль"
+        type="password"
         error={hasSubmitted && formErrors?.password}
 
         onChange={handleChange}
