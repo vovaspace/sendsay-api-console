@@ -6,9 +6,10 @@ $buttonMenuOffset: 4;
   position: relative;
 
   display: flex;
-  // overflow: hidden;
 
   height: rem(30);
+
+  transition: box-shadow $transition-duration--fastest $transition-timingFunction--standard;
 
   border-radius: rem($borderRadius-medium);
   box-shadow: $shadow-elevation--10;
@@ -18,10 +19,17 @@ $buttonMenuOffset: 4;
     box-shadow: $shadow-elevation--20;
   }
 
+  &:active {
+    transition: none;
+    box-shadow: $shadow-elevation--05;
+  }
+
 
   &-Button {
     height: 100%;
     padding: 0 rem($buttonMenuWidth + (2 * $buttonMenuOffset)) 0 rem(10);
+
+    transition: $transition-animation--outlineShadow;
 
     border: none; // Reset button style
     border-radius: rem($borderRadius-medium);

@@ -1,18 +1,39 @@
-$mainBackground: linear-gradient(0deg, $color-button--main, $color-button--light);
-
-
 .Button {
+  position: relative;
+
+  overflow: hidden;
+
   min-width: rem(110);
   height: rem(40);
-  padding-right: rem(10);
-  padding-left: rem(10);
+  padding: 0 rem(10);
+
+  transition: $transition-animation--outlineShadow;
 
   color: $color-button--text;
   border: none; // Reset button style
   border-radius: rem($borderRadius-medium);
-  background: $mainBackground;
+  background: linear-gradient(0deg, $color-button--main, $color-button--light);
 
   font-weight: 500;
+
+
+  // Overlight
+  &::after {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: block;
+
+    content: '';
+
+    transition: background-color $transition-duration--fastest $transition-timingFunction--standard;
+
+    background-color: transparent;
+  }
 
 
   @include focus-visible() {
@@ -20,21 +41,36 @@ $mainBackground: linear-gradient(0deg, $color-button--main, $color-button--light
     box-shadow: $shadow-outline--blue;
   }
 
+
   &:hover:not(:disabled) {
-    background: linear-gradient(0deg, $color-translucentLight--15, $color-translucentLight--15), $mainBackground;
+
+    &::after {
+      background: $color-translucentLight--15;
+    }
   }
 
   &:active:not(:disabled) {
-    background: linear-gradient(0deg, $color-translucentDark--15, $color-translucentDark--15), $mainBackground;
+
+    &::after {
+      transition: none;
+      background: $color-translucentDark--15;
+    }
   }
 
 
   &--disabled {
-    background: $color-button--disabled;
+    background: none;
+
+    &::after {
+      background: $color-button--disabled;
+    }
   }
 
 
   &-Inner {
+    position: relative;
+    z-index: 10;
+
     display: flex;
     justify-content: center;
     align-items: center;

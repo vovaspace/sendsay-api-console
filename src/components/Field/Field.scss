@@ -10,6 +10,8 @@
     width: 100%;
     margin-bottom: rem(5);
 
+    transition: color $transition-duration--fastest $transition-timingFunction--sharp;
+
 
     &--shrinked {
       margin-bottom: rem(3);

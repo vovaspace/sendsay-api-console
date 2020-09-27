@@ -5,6 +5,8 @@
 
   cursor: col-resize;
 
+  transition: fill $transition-duration--fastest $transition-timingFunction--standard;
+
   fill: $color-border;
   border: none;
   background: none;
