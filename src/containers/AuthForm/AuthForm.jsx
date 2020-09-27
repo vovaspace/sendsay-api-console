@@ -78,7 +78,7 @@ export const AuthForm = (props) => {
         name="login"
         label="Логин"
         type="email"
-        inputmode="email"
+        inputMode="email"
         error={hasSubmitted && formErrors?.login}
 
         onChange={handleChange}
@@ -90,7 +90,7 @@ export const AuthForm = (props) => {
         name="sublogin"
         label="Сублогин"
         type="email"
-        inputmode="email"
+        inputMode="email"
         required={false}
 
         onChange={handleChange}
