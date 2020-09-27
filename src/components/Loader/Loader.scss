@@ -1,5 +1,5 @@
 .Loader {
-  animation: rotationAnimation $transition-duration--medium $transition-timingFunction--standard infinite;
+  animation: rotationAnimation $transition-duration--fast steps(8, end) infinite;
 
 
   &--color {
@@ -19,10 +19,6 @@
 
   0% {
     transform: rotate(0);
-  }
-
-  50% {
-    transform: rotate(180deg);
   }
 
   100% {
