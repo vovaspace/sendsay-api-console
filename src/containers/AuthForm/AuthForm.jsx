@@ -80,7 +80,6 @@ export const AuthForm = (props) => {
         type="email"
         inputMode="email"
         error={hasSubmitted && formErrors?.login}
-
         onChange={handleChange}
       />
 
@@ -92,7 +91,6 @@ export const AuthForm = (props) => {
         type="email"
         inputMode="email"
         required={false}
-
         onChange={handleChange}
       />
 
@@ -103,7 +101,6 @@ export const AuthForm = (props) => {
         label="Пароль"
         type="password"
         error={hasSubmitted && formErrors?.password}
-
         onChange={handleChange}
       />
 

@@ -16,11 +16,7 @@
       opacity: 1;
     }
 
-    // &--enterDone {
-
-    // }
-
-
+    // &--enterDone {}
     &--exit {
       transform: translate3d(0, 0, 0);
       opacity: 1;
@@ -35,8 +31,6 @@
       opacity: 0;
     }
 
-    // &--exitDone {
-
-    // }
+    // &--exitDone {}
   }
 }

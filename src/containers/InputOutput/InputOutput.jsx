@@ -90,7 +90,6 @@ export const InputOutput = (props) => {
           error={isCallInvalid}
           area
           shrinkedLabel
-
           onChange={handleInputChange}
           onKeyDown={handleInputKeyDown}
         />

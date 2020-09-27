@@ -85,7 +85,6 @@ export const RequestsHistoryList = (props) => {
                   request={request}
                   status={status}
                   notification={notification}
-
                   onPaste={handlePaste}
                   onCall={handleCall}
                   onCopy={handleCopy}
@@ -104,7 +103,6 @@ export const RequestsHistoryList = (props) => {
           icon="cancel"
           hiddenLabel
           disabled={items.length === 0}
-
           onClick={handleClear}
         >
           Очистить историю запросов

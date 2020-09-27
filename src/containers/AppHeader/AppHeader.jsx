@@ -62,7 +62,6 @@ export const AppHeader = (props) => {
         icon="logout"
         iconPosition="right"
         loading={isLogoutLoading}
-
         onClick={handleLogout}
       >
         Выйти
@@ -73,7 +72,6 @@ export const AppHeader = (props) => {
           className={cn('Item')}
           icon={fullscreen ? 'minimize' : 'maximize'}
           hiddenLabel
-
           onClick={onFullscreenToggle}
         >
           {fullscreen ? 'Выйти из полноэкранного режима' : 'Перейти в полноэкранный режим'}
