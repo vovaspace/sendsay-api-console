@@ -22,6 +22,12 @@
   }
 }
 
+@mixin breakpoint-down($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
 
 @mixin focus-visible() {
   &:focus[data-focus-visible-added] {

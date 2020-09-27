@@ -1,8 +1,10 @@
 // -- Text --
 
-$fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI",
-             "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-             "Droid Sans", "Helvetica Neue", sans-serif;
+$fontFamily-main: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+             'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+             'Droid Sans', 'Helvetica Neue', sans-serif;
+
+$fontFamily-monospace: 'Fira Code', monospace;
 
 
 
@@ -10,6 +12,14 @@ $fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI",
 // -- Grid --
 
 $outerSize: 15;
+
+
+
+
+// -- Breakpoints --
+
+$breakpoint-tablet: 525;
+$breakpoint-laptop: 875;
 
 
 
@@ -37,17 +47,18 @@ $borderRadius-medium: 5;
 
 // -- Transitions --
 
-$transition-duration--fastest: 304ms;
-$transition-duration--fast: 656ms;
-$transition-duration--medium: 1008ms;
-$transition-duration--slow: 1360ms;
-$transition-duration--slowest: 1712ms;
+$transition-duration--fastest: 120ms;
+$transition-duration--fast: 300ms;
+$transition-duration--medium: 900ms;
+$transition-duration--slow: 1350ms;
+$transition-duration--slowest: 1750ms;
 
+$transition-timingFunction--acceleration: cubic-bezier(0.4, 0, 1, 1);
 $transition-timingFunction--deceleration: cubic-bezier(0, 0, 0.2, 1);
 $transition-timingFunction--standard: cubic-bezier(0.4, 0, 0.2, 1);
-$transition-timingFunction--acceleration: cubic-bezier(0.4, 0, 1, 1);
 $transition-timingFunction--sharp: cubic-bezier(0.4, 0, 0.6, 1);
-$transition-timingFunction--linear: linear;
+
+$transition-animation--outlineShadow: box-shadow $transition-duration--fastest $transition-timingFunction--sharp;
 
 
 
@@ -59,6 +70,7 @@ $color-dark: #0d0d0d;
 
 $color-translucentLight--15: rgba(255, 255, 255, 0.15);
 
+$color-translucentDark--05: rgba(0, 0, 0, 0.05);
 $color-translucentDark--10: rgba(0, 0, 0, 0.1);
 $color-translucentDark--15: rgba(0, 0, 0, 0.15);
 $color-translucentDark--20: rgba(0, 0, 0, 0.2);
@@ -125,6 +137,7 @@ $shadow-outline--destructive: 0 0 0 rem(2) $color-red--30;
 
 $shadow-error: 0 0 rem(5) 0 $color-red--30;
 
+$shadow-elevation--05: 0 rem(1) rem(1) 0 $color-translucentDark--05;
 $shadow-elevation--10: 0 rem(1) rem(2) 0 $color-translucentDark--10;
 $shadow-elevation--20: 0 rem(1) rem(4) 0 $color-translucentDark--25;
 $shadow-elevation--50: 0 rem(4) rem(10) 0 $color-translucentDark--10;

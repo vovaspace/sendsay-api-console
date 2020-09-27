@@ -52,7 +52,7 @@ export const AppFooter = (props) => {
         </Button>
       </span>
 
-      <span className={cn('Item', { aligned: 'center' })}>
+      <span className={cn('Item', { aligned: 'center', hiddenOnTabletDown: true })}>
         <Copyright />
       </span>
 

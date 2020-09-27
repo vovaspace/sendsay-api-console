@@ -6,9 +6,10 @@ $buttonMenuOffset: 4;
   position: relative;
 
   display: flex;
-  // overflow: hidden;
 
   height: rem(30);
+
+  transition: box-shadow $transition-duration--fastest $transition-timingFunction--standard;
 
   border-radius: rem($borderRadius-medium);
   box-shadow: $shadow-elevation--10;
@@ -23,6 +24,11 @@ $buttonMenuOffset: 4;
     height: 100%;
     padding: 0 rem($buttonMenuWidth + (2 * $buttonMenuOffset)) 0 rem(10);
 
+    transition:
+      $transition-animation--outlineShadow,
+      color $transition-duration--fastest $transition-timingFunction--sharp;
+
+    color: $color-text;
     border: none; // Reset button style
     border-radius: rem($borderRadius-medium);
     background-color: $color-background--light;
@@ -31,6 +37,11 @@ $buttonMenuOffset: 4;
     @include focus-visible() {
       outline: none;
       box-shadow: $shadow-outline--blue;
+    }
+
+    &:active {
+      transition: $transition-animation--outlineShadow;
+      color: $color-button--light;
     }
   }
 

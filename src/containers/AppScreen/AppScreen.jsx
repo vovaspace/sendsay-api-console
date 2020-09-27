@@ -72,11 +72,7 @@ export const AppScreen = () => {
       <PortalMountNodeContext.Provider value={rootEl}>
         <AppHeader
           fullscreen={isFullscreen}
-          disabledFullscreenButton={
-            !document.fullscreenEnabled
-            && !document.webkitFullscreenEnabled
-          }
-
+          hideFullscreenButton={!(document.fullscreenEnabled || document.webkitFullscreenEnabled)}
           onFullscreenToggle={handleFullscreenToggle}
         />
         <RequestsHistoryList />

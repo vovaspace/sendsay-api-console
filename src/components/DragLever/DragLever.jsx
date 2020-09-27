@@ -77,7 +77,6 @@ export const DragLever = (props) => {
     <button
       className={cn({ active: isDragging }, [className])}
       type="button"
-
       onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
     >

@@ -1,4 +1,5 @@
-$minFieldWidth: 240;
+$minFieldWidth: 640;
+$minFieldHeight: 520;
 $fieldsDistance: 10;
 $minNoScrollWidth: (2 * $minFieldWidth ) + (2 * $outerSize) + $fieldsDistance;
 
@@ -28,7 +29,7 @@ $minNoScrollWidth: (2 * $minFieldWidth ) + (2 * $outerSize) + $fieldsDistance;
     flex-grow: 1;
     flex-shrink: 1;
     min-width: rem($minFieldWidth);
-    min-height: rem(520);
+    min-height: rem($minFieldHeight);
 
 
     &--type {

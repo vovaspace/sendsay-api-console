@@ -5,6 +5,8 @@
   min-height: rem(24);
   padding: 0; // Reset button style
 
+  transition: fill $transition-duration--fastest $transition-timingFunction--standard;
+
   fill: $color-border;
   border: none; // Reset button style
   background: none; // Reset button style

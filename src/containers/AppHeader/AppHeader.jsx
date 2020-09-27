@@ -22,7 +22,7 @@ export const AppHeader = (props) => {
   const {
     className,
     fullscreen,
-    disabledFullscreenButton,
+    hideFullscreenButton,
     onFullscreenToggle,
   } = props;
 
@@ -43,11 +43,16 @@ export const AppHeader = (props) => {
       tag="header"
       type="top"
     >
-      <Logotype className={cn('Item', { logotype: true })} />
-      <TextLogotype className={cn('Item')} shrinked />
+      <span className={cn('Item', { shiftingRight: true })}>
+        <Logotype className={cn('Item')} />
+        <TextLogotype
+          className={cn('Item', { textLogotype: true, hiddenOnLaptopDown: true })}
+          shrinked
+        />
+      </span>
 
       <UserChip
-        className={cn('Item', { shiftedRight: true })}
+        className={cn('Item', { hiddenOnLaptopDown: true })}
         account={user.account}
         sublogin={user.sublogin}
       />
@@ -57,22 +62,21 @@ export const AppHeader = (props) => {
         icon="logout"
         iconPosition="right"
         loading={isLogoutLoading}
-
         onClick={handleLogout}
       >
         Выйти
       </IconButton>
 
-      <IconButton
-        className={cn('Item')}
-        icon={fullscreen ? 'minimize' : 'maximize'}
-        disabled={disabledFullscreenButton}
-        hiddenLabel
-
-        onClick={onFullscreenToggle}
-      >
-        {fullscreen ? 'Выйти из полноэкранного режима' : 'Перейти в полноэкранный режим'}
-      </IconButton>
+      {!hideFullscreenButton && (
+        <IconButton
+          className={cn('Item')}
+          icon={fullscreen ? 'minimize' : 'maximize'}
+          hiddenLabel
+          onClick={onFullscreenToggle}
+        >
+          {fullscreen ? 'Выйти из полноэкранного режима' : 'Перейти в полноэкранный режим'}
+        </IconButton>
+      )}
     </AppBar>
   );
 };
@@ -81,7 +85,7 @@ export const AppHeader = (props) => {
 export const AppHeaderPropTypes = {
   className: PropTypes.string,
   fullscreen: PropTypes.bool.isRequired,
-  disabledFullscreenButton: PropTypes.bool.isRequired,
+  hideFullscreenButton: PropTypes.bool.isRequired,
   onFullscreenToggle: PropTypes.func.isRequired,
 };
 

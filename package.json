@@ -1,6 +1,6 @@
 {
   "name": "sendsay-api-console",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sendsay API console.",
   "scripts": {
     "start": "webpack-dev-server --env development",

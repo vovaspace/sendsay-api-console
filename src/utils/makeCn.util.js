@@ -12,6 +12,7 @@ const stringify = (styles, block, elem, mods, mix) => {
     const resolvedName = styles[className];
 
     if (IS_DEVELOPMENT && warnOnUnresolved && !resolvedName) {
+      // eslint-disable-next-line no-console
       console.warn(`Unresolved className '${className}'`);
     }
 

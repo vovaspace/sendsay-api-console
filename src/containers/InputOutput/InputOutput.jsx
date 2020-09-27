@@ -2,6 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { KEYBOARD_KEY } from '@/constants';
 import { makeCn, getElementInnerWidth } from '@/utils';
 import { ApiCallerActions, UserInterfaceActions } from '@/actions';
 import { ApiCallerSelectors, UserInterfaceSelectors } from '@/selectors';
@@ -58,6 +59,15 @@ export const InputOutput = (props) => {
   }, [dispatch]);
 
 
+  const handleInputKeyDown = useCallback((event) => {
+    // Call by Shift+Enter
+    if (event.key === KEYBOARD_KEY.enter && event.shiftKey) {
+      event.preventDefault();
+      dispatch(ApiCallerActions.makeCallRequest());
+    }
+  }, [dispatch]);
+
+
   const handleInputChange = useCallback((value) => {
     dispatch(ApiCallerActions.setRequestValue({ value }));
   }, [dispatch]);
@@ -80,8 +90,8 @@ export const InputOutput = (props) => {
           error={isCallInvalid}
           area
           shrinkedLabel
-
           onChange={handleInputChange}
+          onKeyDown={handleInputKeyDown}
         />
 
         <TextField

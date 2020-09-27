@@ -91,10 +91,8 @@ export const ButtonMenu = (props) => {
         ref={buttonRef}
         className={cn({ active: isOpen }, [className])}
         type="button"
-
         aria-controls={htmlId}
         aria-haspopup
-
         onClick={handleToggle}
       >
         <span className={cn('Label')}>{label}</span>
@@ -120,7 +118,6 @@ export const ButtonMenu = (props) => {
             id={htmlId}
             className={cn('MenuList')}
             tabIndex={-1}
-
             onAnyItemClick={closeOnItemClick ? handleClose : null}
             onBlur={handleMenuListBlur}
             onKeyDown={handleMenuListKeyDown}

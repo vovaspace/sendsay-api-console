@@ -3,18 +3,25 @@
 
 
   &-Item {
-    margin-right: rem(30);
+    display: flex;
+    margin-left: rem(30);
 
-    &:last-child {
-      margin-right: 0;
+    &:first-child {
+      margin-left: 0;
     }
 
-    &--logotype {
-      margin-right: rem(20);
+    &--textLogotype {
+      margin-left: rem(20);
     }
 
-    &--shiftedRight {
-      margin-left: auto;
+    &--shiftingRight {
+      margin-right: auto;
+    }
+
+    &--hiddenOnLaptopDown {
+      @include breakpoint-down(rem($breakpoint-laptop)) {
+        display: none;
+      }
     }
   }
 }

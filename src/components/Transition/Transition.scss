@@ -3,9 +3,8 @@
   &-Slip {
 
     &--enter {
-      transform: translateY(-150%);
+      transform: translate3d(0, -150%, 0);
       opacity: 0;
-      will-change: transform, opacity;
     }
 
     &--enterActive {
@@ -13,19 +12,14 @@
         opacity $transition-duration--fast $transition-timingFunction--deceleration,
         transform $transition-duration--fast $transition-timingFunction--deceleration;
 
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
       opacity: 1;
     }
 
-    // &--enterDone {
-
-    // }
-
-
+    // &--enterDone {}
     &--exit {
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
       opacity: 1;
-      will-change: transform, opacity;
     }
 
     &--exitActive {
@@ -33,12 +27,10 @@
         opacity $transition-duration--fast $transition-timingFunction--deceleration,
         transform $transition-duration--fast $transition-timingFunction--deceleration;
 
-      transform: translateY(-150%);
+      transform: translate3d(0, -150%, 0);
       opacity: 0;
     }
 
-    // &--exitDone {
-
-    // }
+    // &--exitDone {}
   }
 }
