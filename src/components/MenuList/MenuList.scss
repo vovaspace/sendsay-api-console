@@ -20,6 +20,7 @@
       color $transition-duration--fastest $transition-timingFunction--standard,
       background-color $transition-duration--fastest $transition-timingFunction--standard;
 
+    color: $color-text;
     border: none; // Reset button style
     background: none; // Reset button style
 
@@ -35,6 +36,7 @@
         color: $color-menu--lightText;
       }
     }
+
 
     &:hover {
       color: $color-menu--lightText;
